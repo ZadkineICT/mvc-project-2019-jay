@@ -1,7 +1,0 @@
-name: projectjay
-recipe: laravel
-config:
-  webroot: public
-services:
-  my-service:
-    type: phpmyadmin
