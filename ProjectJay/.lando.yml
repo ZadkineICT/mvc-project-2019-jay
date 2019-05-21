@@ -1,0 +1,7 @@
+name: websitejay
+recipe: laravel
+config:
+  webroot: public
+services:
+  my-service:
+    type: phpmyadmin
