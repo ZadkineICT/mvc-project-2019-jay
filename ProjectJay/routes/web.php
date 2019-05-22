@@ -15,4 +15,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/hotels/{hotel}/delete', 'HotelsController@delete')->name('hotels.delete');
+
 Route::resource('/hotels', 'HotelsController');
