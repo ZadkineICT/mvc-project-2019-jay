@@ -8,6 +8,7 @@ use Faker\Generator as Faker;
 $factory->define(Hotel::class, function (Faker $faker) {
     return [
         //
+        'name_hotel' => $faker->company,
         'address' => $faker->streetAddress,
         'zip_code' => $faker->postcode,
         'city' => $faker->city,
