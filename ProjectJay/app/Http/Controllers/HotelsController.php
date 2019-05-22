@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Hotel;
+use App\Http\Requests\StoreHotelsRequest;
+use App\Http\Requests\UpdateHotelsRequest;
 use Illuminate\Http\Request;
 
 class HotelsController extends Controller
@@ -37,9 +39,21 @@ class HotelsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreHotelsRequest $request)
     {
         //
+        $hotel = new Hotel();
+        $hotel->name_hotel = $request->name_hotel;
+        $hotel->address = $request->address;
+        $hotel->zip_code = $request->zip_code;
+        $hotel->city = $request->city;
+        $hotel->country = $request->country;
+        $hotel->phone_number = $request->phone_number;
+
+        $hotel->save();
+
+        return redirect()->route('hotels.index');
+
     }
 
     /**
@@ -51,6 +65,7 @@ class HotelsController extends Controller
     public function show(Hotel $hotel)
     {
         //
+        return view('hotels.show', compact('hotel'));
     }
 
     /**
@@ -62,6 +77,7 @@ class HotelsController extends Controller
     public function edit(Hotel $hotel)
     {
         //
+        return view('hotels.edit', compact('hotel'));
     }
 
     /**
@@ -71,9 +87,19 @@ class HotelsController extends Controller
      * @param  \App\Hotel  $hotel
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Hotel $hotel)
+    public function update(UpdateHotelsRequest $request, Hotel $hotel)
     {
         //
+        $hotel->name_hotel = $request->name_hotel;
+        $hotel->address = $request->address;
+        $hotel->zip_code = $request->zip_code;
+        $hotel->city = $request->city;
+        $hotel->country = $request->country;
+        $hotel->phone_number = $request->phone_number;
+
+        $hotel->save();
+
+        return redirect()->route('hotels.index')->with('message', 'Hotel geupdate');
     }
 
     /**
@@ -82,8 +108,16 @@ class HotelsController extends Controller
      * @param  \App\Hotel  $hotel
      * @return \Illuminate\Http\Response
      */
+    public function delete(Hotel $hotel)
+    {
+        //
+        return view('hotels.delete', compact('hotel'));
+    }
+
     public function destroy(Hotel $hotel)
     {
         //
+        $hotel->delete();
+        return redirect()->route('hotels.index')->with('message', 'Hotel deleted');
     }
 }
