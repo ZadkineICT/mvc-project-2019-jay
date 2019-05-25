@@ -16,8 +16,12 @@ class CreateRoomsTable extends Migration
         Schema::create('rooms', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('room_size', 50);
-            $table->string('hotel_id');
+            $table->integer('hotel_id')->unsigned()->nullable();
             $table->timestamps();
+        });
+
+        Schema::table('rooms', function($table) {
+            $table->engine = "InnoDB";
         });
     }
 
@@ -29,5 +33,6 @@ class CreateRoomsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('rooms');
+
     }
 }

@@ -18,6 +18,11 @@ Route::get('/', function () {
 Route::get('/hotels/{hotel}/delete', 'HotelsController@delete')->name('hotels.delete');
 
 Route::resource('/hotels', 'HotelsController');
+
+
+Route::get('/rooms/{room}/delete', 'RoomsController@delete')->name('rooms.delete');
+
+Route::resource('/rooms', 'RoomsController');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
