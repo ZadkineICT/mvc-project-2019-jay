@@ -13,7 +13,7 @@ class UpdateRoomsRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,7 @@ class UpdateRoomsRequest extends FormRequest
     public function rules()
     {
         return [
-            'room_size' => 'required' ,
+            'room_size' => 'required',
             'hotel_id' => 'required',
         ];
     }

@@ -7,7 +7,7 @@ use App\Http\Requests\StoreRoomsRequest;
 use App\Http\Requests\UpdateRoomsRequest;
 use Illuminate\Http\Request;
 
-class RoomController extends Controller
+class RoomsController extends Controller
 {
     /**
      * Display a listing of the resource.

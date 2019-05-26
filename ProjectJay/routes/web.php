@@ -15,6 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// Route::get('/hotel', function () {
+//     return view('hotel.index');
+// });
+
 Route::get('/hotels/{hotel}/delete', 'HotelsController@delete')->name('hotels.delete');
 
 Route::resource('/hotels', 'HotelsController');

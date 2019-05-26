@@ -1,7 +1,11 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: Yavuz Uca
- * Date: 21-5-2019
- * Time: 11:44
- */
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="{{ asset('favicon.ico') }}">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <title>Laravel Book project </title>
+</head>
+<main role="main" class="container">
+    @yield('content')
+</main>     

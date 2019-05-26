@@ -13,7 +13,7 @@ class StoreRoomsRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,7 @@ class StoreRoomsRequest extends FormRequest
     public function rules()
     {
         return [
-            'rom_size' => 'required',
+            'room_size' => 'required',
             'hotel_id' => 'required',
         ];
     }
