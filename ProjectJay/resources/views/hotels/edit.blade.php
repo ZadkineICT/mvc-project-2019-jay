@@ -39,12 +39,12 @@
         <input type="text" class="form-control" name="name_hotel" value="{{ $hotel->name_hotel }}">
     </div>
     <div class="form-group">
-        <label>Zip Code</label>
-        <input type="text" class="form-control" name="zip_code" value="{{ $hotel->zip_code }}">
-    </div>
-    <div class="form-group">
         <label>Address</label>
         <input type="text" name="address" class="form-control" value="{{ $hotel->address }}">
+    </div>
+    <div class="form-group">
+        <label>Zip Code</label>
+        <input type="text" class="form-control" name="zip_code" value="{{ $hotel->zip_code }}">
     </div>
     <div class="form-group">
         <label>City</label>

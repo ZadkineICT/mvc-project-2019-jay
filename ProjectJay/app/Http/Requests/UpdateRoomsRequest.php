@@ -25,7 +25,7 @@ class UpdateRoomsRequest extends FormRequest
     {
         return [
             'room_size' => 'required',
-            'hotel_id' => 'required',
+            'hotel_id' => 'required'
         ];
     }
 }

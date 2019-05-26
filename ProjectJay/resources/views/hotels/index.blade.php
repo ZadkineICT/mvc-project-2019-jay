@@ -4,7 +4,7 @@
 
 <h1 class="mt-5">Hotels</h1>
 
-{{-- @if (session('message'))
+@if (session('message'))
     <div class="alert alert-succes" role="alert">
         {{ session('message') }}
     </div>
@@ -14,7 +14,7 @@
     <div class="alert alert-success" role="alert">
         {{ session('status') }}
     </div>
-@endif --}}
+@endif
 
 <nav class="nav">
     <ul class="nav nav-tabs">
@@ -55,7 +55,7 @@
             <td>{{ $hotel->address }}</td>
             <td>{{ $hotel->city }}</td>
             <td>{{ $hotel->country }}</td>
-            <td><a href="{{ route('rooms.show', $hotel) }}">Rooms</a></td>
+            <td>{{ $rooms }}</td>
             <td><a href="{{ route('hotels.show', $hotel) }}">Details</a></td>
             {{-- @hasrole('admin') --}}
             <td><a href="{{ route('hotels.edit', $hotel) }}">Edit</a></td>

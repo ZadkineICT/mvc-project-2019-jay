@@ -46,7 +46,6 @@ class RoomsController extends Controller
         $room->room_size = $request->room_size;
         $room->hotel_id = $request->hotel_id;
 
-
         $room->save();
 
         return redirect()->route('rooms.index');
@@ -91,7 +90,7 @@ class RoomsController extends Controller
 
         $room->save();
 
-        return redirect()->route('rooms.index')->with('message', 'Room geupdate');
+        return redirect()->route('rooms.index')->with('status', 'Room geupdate');
     }
 
     /**

@@ -8,7 +8,7 @@ use Faker\Generator as Faker;
 $factory->define(Room::class, function (Faker $faker) {
     return [
         //
-        'room_size' => $faker->numberBetween(10,50),
+        'room_size' => $faker->numberBetween(1,6),
         'hotel_id' => \App\Hotel::all()->random()->id,
         'created_at' => $faker->dateTimeThisDecade('now', null),
         'updated_at' => $faker->dateTimeThisDecade('now', null)
