@@ -15,20 +15,15 @@ class CreateRoomsTable extends Migration
     {
         Schema::create('rooms', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('hotel_id')->unsigned();
             $table->string('room_size', 2);
             $table->timestamps();
         });
 
-        Schema::table("rooms", function(Blueprint $table) {
-            $table->integer('hotel_id')->unsigned();
-            $table->foreign('hotel_id')
-                ->references('id')->on('hotels');
-        });
-    /*
         Schema::table('rooms', function($table) {
             $table->engine = "InnoDB";
         });
-    */
+
     }
 
     /**

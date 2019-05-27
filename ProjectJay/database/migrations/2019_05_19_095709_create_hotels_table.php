@@ -19,7 +19,7 @@ class CreateHotelsTable extends Migration
             $table->char('address', 75);
             $table->char('zip_code', 10);
             $table->char('city', 45);
-            $table->char('country', 45);
+            $table->char('country', 75);
             $table->string('phone_number', 15);
             $table->timestamps();
         });
