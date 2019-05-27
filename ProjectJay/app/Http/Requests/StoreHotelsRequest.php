@@ -24,7 +24,7 @@ class StoreHotelsRequest extends FormRequest
     public function rules()
     {
         return [
-            'name_hotel' => 'required',
+            'name_hotel' => 'required|unique:hotels',
             'address' => 'required',
             'zip_code' => 'required',
             'city' => 'required',

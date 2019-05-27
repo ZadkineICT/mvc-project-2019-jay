@@ -110,6 +110,6 @@ class RoomsController extends Controller
     {
         //
         $room->delete();
-        return redirect()->route('rooms.index')->with('message', 'Room deleted');
+        return redirect()->route('rooms.index')->with('status', 'Room deleted');
     }
 }

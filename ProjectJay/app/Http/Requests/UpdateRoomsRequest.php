@@ -24,8 +24,8 @@ class UpdateRoomsRequest extends FormRequest
     public function rules()
     {
         return [
-            'room_size' => 'required',
-            'hotel_id' => 'required'
+            'room_size' => 'required' . $this->room->id,
+            'hotel_id' => 'required|exists:hotels, id'
         ];
     }
 }
