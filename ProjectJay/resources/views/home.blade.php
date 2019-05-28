@@ -17,6 +17,21 @@
                     You are logged in!
                 </div>
             </div>
+            <br>
+            @can('create hotels', 'create rooms')
+            <div class="card">
+                <div class="card-header">Tables</div>
+
+                <div class="card-body">
+                    <div class="links">
+                        <ul>
+                            <li><a href="{{ route('hotels.index') }}">Hotels</a></li>
+                            <li><a href="{{ route('rooms.index') }}">Rooms</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            @endcan
         </div>
     </div>
 </div>
