@@ -10,6 +10,13 @@ use Illuminate\Http\Request;
 
 class HotelsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('permission:create hotels',['only' => ['create', 'store']]);
+        $this->middleware('permission:edit hotels',['only' => ['edit', 'update']]);
+        $this->middleware('permission:delete hotels',['only' => ['delete', 'destroy']]);
+    }
     /**
      * Display a listing of the resource.
      *

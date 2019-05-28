@@ -18,15 +18,17 @@ Route::get('/', function () {
 // Route::get('/hotel', function () {
 //     return view('hotel.index');
 // });
+Route::group(['middleware' => ['role:owner|admin|client']], function (){
+    Route::get('/hotels/{hotel}/delete', 'HotelsController@delete')->name('hotels.delete');
+    Route::resource('/hotels', 'HotelsController');
+});
 
-Route::get('/hotels/{hotel}/delete', 'HotelsController@delete')->name('hotels.delete');
 
-Route::resource('/hotels', 'HotelsController');
+Route::group(['middleware' => ['role:owner|admin']], function () {
+    Route::get('/rooms/{room}/delete', 'RoomsController@delete')->name('rooms.delete');
+    Route::resource('/rooms', 'RoomsController');
+});
 
-
-Route::get('/rooms/{room}/delete', 'RoomsController@delete')->name('rooms.delete');
-
-Route::resource('/rooms', 'RoomsController');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
