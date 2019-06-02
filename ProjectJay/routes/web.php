@@ -23,6 +23,12 @@ Route::group(['middleware' => ['role:owner|admin|client']], function (){
     Route::resource('/hotels', 'HotelsController');
 });
 
+use App\Hotel;
+
+Route::get('/frontpage', function () {
+    $hotels = Hotel::all();
+    return view('frontpage', compact('hotels'));
+});
 
 Route::group(['middleware' => ['role:owner|admin']], function () {
     Route::get('/rooms/{room}/delete', 'RoomsController@delete')->name('rooms.delete');

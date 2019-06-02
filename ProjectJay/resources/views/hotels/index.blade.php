@@ -47,22 +47,28 @@
         </tr>
     </thead>
     <tbody>
-        @foreach($hotels as $hotel)
-        <tr>
-            <td scope="row">{{ $hotel->id }}</td>
-            <td>{{ $hotel->name_hotel }}</td>
-            <td>{{ $hotel->zip_code }}</td>
-            <td>{{ $hotel->address }}</td>
-            <td>{{ $hotel->city }}</td>
-            <td>{{ $hotel->country }}</td>
-            <td>{{ $rooms }}</td>
-            <td><a href="{{ route('hotels.show', $hotel) }}">Details</a></td>
-            {{-- @hasrole('admin') --}}
-            <td><a href="{{ route('hotels.edit', $hotel) }}">Edit</a></td>
-            <td><a href="{{ route('hotels.delete', $hotel) }}">Delete</a></td>
-            {{-- @endhasrole --}}
-        </tr>
-        @endforeach
+        <div class="admin-list">
+            <ul class="row">
+                @foreach($hotels as $hotel)
+                <td class="ustify-content-around hotel-item-admin">
+                    <tr>
+                        <td>{{ $hotel->id }}</td>
+                        <td>{{ $hotel->name_hotel }}</td>
+                        <td>{{ $hotel->zip_code }}</td>
+                        <td>{{ $hotel->address }}</td>
+                        <td>{{ $hotel->city }}</td>
+                        <td>{{ $hotel->country }}</td>
+                        <td>{{ $rooms }}</td>
+                        <td><a href="{{ route('hotels.show', $hotel) }}">Details</a></td>
+                        {{-- @hasrole('admin') --}}
+                        <td><a href="{{ route('hotels.edit', $hotel) }}">Edit</a></td>
+                        <td><a href="{{ route('hotels.delete', $hotel) }}">Delete</a></td>
+                        {{-- @endhasrole --}}
+                    </tr>
+                </td>
+                @endforeach
+            </ul>
+        </div>  
     </tbody>
 </table>
 
