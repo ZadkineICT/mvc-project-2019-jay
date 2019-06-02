@@ -24,6 +24,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('rooms.index') }}">Rooms</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('reservations.index') }}">Reservations</a>
+                </li>
             </ul>
 
             <!-- Right Side Of Navbar -->
