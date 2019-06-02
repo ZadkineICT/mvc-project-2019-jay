@@ -4,6 +4,12 @@
 
 <h1 class="mt-5">Hotel details</h1>
 
+<style>
+    body {
+        color:black;
+    }
+</style>
+
 <nav class="nav">
     <ul class="nav nav-tabs">
         <li class="nav-item">

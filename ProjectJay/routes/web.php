@@ -15,13 +15,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Route::get('/hotel', function () {
-//     return view('hotel.index');
-// });
+use App\Hotel;
+
+Route::get('/frontpage', function () {
+    $hotels = Hotel::all();
+    return view('frontpage', compact('hotels'));
+});
 
 Route::get('/hotels/{hotel}/delete', 'HotelsController@delete')->name('hotels.delete');
 
 Route::resource('/hotels', 'HotelsController');
+
 
 
 Route::get('/rooms/{room}/delete', 'RoomsController@delete')->name('rooms.delete');

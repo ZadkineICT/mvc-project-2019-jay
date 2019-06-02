@@ -1,0 +1,244 @@
+
+
+/* 
+===================
+                  
+   Front-Page     
+     [Main]    
+    
+===================
+*/ 
+body {
+    background-color: #161616;
+    color: #d8d8d8;
+    display: grid;
+    grid-template-columns: 15vw 84vw
+}
+
+hr {
+    border-color: #353535;
+}
+
+h3 {
+    text-align:center;
+    margin:1vw;
+}
+
+nav {
+    grid-column: 1/3;
+    grid-row: 1; 
+}
+main {
+    padding-right:10vw;
+    grid-column: 2;
+    grid-row: 2; 
+}
+
+aside {
+    margin-left:5vw;
+    grid-column: 1;
+    grid-row: 2;
+}
+/* 
+===================
+                  
+   Front-Page     
+  [Hotel-List]   
+    
+===================
+*/            
+
+.hotel-list {
+    max-width:70vw;
+    margin: 0 auto;
+}
+
+.hotel-list ul {
+    list-style: none;
+}
+
+img {
+    width:100%;
+}
+
+.hotel-item-title {
+    color:#ffffff;
+    font-weight: 300;
+    font-size:1vw;
+    text-align:center;
+    background-color: #353535;
+    border-radius: 5px 5px 0 0;
+    padding: 0.6vw 0;
+}
+
+.hotel-item-country {
+    color:white;
+    font-weight:300;
+    padding:0.2vw;
+    background-color:#242424;
+    border-radius: 0 0 5px 5px;
+}
+
+.hotel-item {
+    background-color: #2a2a2a;
+    padding: 0;
+    width: 40vw;
+    max-width: 30%;
+    margin: 1vw;
+    border-radius: 5px;
+    transition: 0.1s ease-in-out;
+}
+
+.hotel-item:hover {
+    -webkit-box-shadow: 0px 0px 24px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 24px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 24px 0px rgba(0,0,0,0.75);
+    transition: 0.2s ease-in-out;
+    -moz-transform: scale(1.05);
+    -webkit-transform: scale(1.05);
+    -o-transform: scale(1.05);
+    -ms-transform: scale(1.05);
+    transform: scale(1.05);
+}
+
+.hotel-item a:hover {
+    text-decoration: none;
+}
+
+.hotel-item ul {
+    padding: 0;
+}
+
+/* 
+===================
+                  
+   Front-Page     
+   [Popular] 
+    
+===================
+*/   
+
+.item-popular .hotel-item-title  {
+    background-color: #9a8403;
+}
+
+.item-popular:hover{
+    background-color: #dfbd01;  
+}
+
+.item-popular .hotel-item-country  {
+    background-color: #605802;
+}
+
+
+.item-popular:hover {
+    -webkit-box-shadow: 0px 0px 24px 0px rgba(221, 236, 4, 0.61);
+    -moz-box-shadow: 0px 0px 24px 0px rgba(221, 236, 4, 0.61);
+    box-shadow: 0px 0px 24px 0px rgba(221, 236, 4, 0.61);
+}
+
+/* 
+===================
+                  
+   Front-Page     
+  [Admin-list]    
+    
+===================
+*/ 
+
+// .admin-list {
+//     width:70vw;
+// }
+
+// .admin-list > .row {
+//     padding: 0;
+// }
+
+// .hotel-item-admin {
+//     background-color: #d8d8d8;   
+//     border-radius:15px;
+//     list-style: none;
+// }
+
+/* 
+===================
+                  
+   Front-Page     
+      [Nav]    
+    
+===================
+*/ 
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #282828;
+}
+
+nav ul li a {
+    display:block;
+    padding: 8px;
+    background-color:#282828;
+    font-size:1vw; 
+    font-family:consolas;
+    padding: 0.5vw 1vw;
+    transition: 0.1s ease-in-out;
+    color:#9a8403;
+}
+
+nav ul li a:hover {
+    background-color:#d2b404;
+    cursor:pointer;
+    transition: 0.1s ease-in-out;
+    -webkit-box-shadow: -5px 0px 4px -2px rgba(0,0,0,1),5px 0px 4px -2px rgba(0,0,0,1);
+    -moz-box-shadow: -5px 0px 4px -2px rgba(0,0,0,1),5px 0px 4px -2px rgba(0,0,0,1);
+    box-shadow: inset 25px 0px 25px -25px rgba(0,0,0,0.8), inset -25px 0px 25px -25px rgba(0,0,0,0.8);
+    text-decoration: none;
+    color: #282828;
+}
+
+.nav-right {
+    float: right;
+}
+.nav-left {
+    float: left;
+}
+.nav-mid {
+    float: left;
+    margin:0 28vw;
+    margin-left:30vw;
+    width:15vw;
+    background-color:#373737;
+    border-style: none;
+    padding: 0.7vw 0.3vw;
+}
+
+/* 
+===================
+                  
+   Front-Page     
+    [Aside]    
+    
+===================
+*/ 
+
+aside {
+    padding-top:3.2vw;
+}
+aside ul, label, input[type=checkbox] {
+    list-style: none;
+    padding:0 0.1vw;
+    cursor:pointer;
+}
+aside ul li {
+    background-color: #1a1a1a;
+    font-size:1vw;
+    padding:0.2vw 0.5vw;
+    transition: 0.08s ease-in-out;
+}
+aside ul li:hover {
+    background-color: #404040;
+    transition: 0.08s ease-in-out;
+}
