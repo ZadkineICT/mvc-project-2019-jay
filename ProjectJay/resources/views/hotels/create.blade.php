@@ -20,14 +20,14 @@
         <li class="nav-item">
             <a class="nav-link " href="{{ route('hotels.index') }}">List</a>
         </li>
-        {{-- @hasrole('admin') --}}
+        @can('create hotels')
         <li class="nav-item">
             <a class="nav-link active" href="{{ route('hotels.create') }}">Add </a>
         </li>
-        {{-- @endhasrole --}}
+        @endcan
     </ul>
 </nav>
-
+@can('create hotels')
 <form action="{{ route('hotels.index') }}" method="POST">
     @csrf
     <div class="form-group">
@@ -64,5 +64,5 @@
     </div> --}}
     <button type="submit" class="btn btn-primary">Add</button>
 </form>
-
+@endcan
 @endsection

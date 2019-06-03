@@ -13,7 +13,7 @@
         </ul>
     </div>
 @endif
-
+@can('edit hotels', 'delete hotels')
 <form action="{{ route('hotels.destroy', $hotel) }}" method="POST">
     @csrf
     @method('DELETE')
@@ -43,5 +43,5 @@
     </div>
     <button type="submit" class="btn btn-danger">DELETE</button>
 </form>
-
+@endcan
 @endsection
