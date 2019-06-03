@@ -9,6 +9,13 @@ use Illuminate\Http\Request;
 
 class ReservationsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('permission:create reservations',['only' => ['create', 'store']]);
+        $this->middleware('permission:edit reservations',['only' => ['edit', 'update']]);
+        $this->middleware('permission:delete reservations',['only' => ['delete', 'destroy']]);
+    }
     /**
      * Display a listing of the resource.
      *
