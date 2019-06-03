@@ -87,6 +87,7 @@
                 <div class="links">
                     <a href="{{ route('hotels.index') }}">Hotels</a>
                     <a href="{{ route('rooms.index') }}">Rooms</a>
+                    <a href="{{ route('reservations.index') }}">Reservations</a>
                     <a href="/frontpage">Front Page</a>
                 </div>
             </div>

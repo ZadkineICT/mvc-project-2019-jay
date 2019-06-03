@@ -8,8 +8,8 @@ use Faker\Generator as Faker;
 $factory->define(Reservation::class, function (Faker $faker) {
     return [
         //
-        'date_start' => $faker->date(),
-        'date_end' => $faker->date(),
+        'start' => $faker->date(),
+        'end' => $faker->date(),
         'price' => $faker->randomFloat(2,1,99),
         'number_of_persons' => $faker->numberBetween(1,6),
         'user_id' => \App\User::all()->random()->id,

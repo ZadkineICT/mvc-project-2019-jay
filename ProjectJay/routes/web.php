@@ -35,6 +35,11 @@ Route::group(['middleware' => ['role:owner|admin']], function () {
     Route::resource('/rooms', 'RoomsController');
 });
 
+Route::group(['middleware' => ['role:owner|admin']], function () {
+    Route::get('/reservations/{reservation}/delete', 'ReservationsController@delete')->name('reservations.delete');
+    Route::resource('/reservations', 'ReservationsController');
+});
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
