@@ -4,7 +4,7 @@
 
 <h1 class="mt-5">Rooms</h1>
 
-{{-- @if (session('message'))
+@if (session('message'))
     <div class="alert alert-succes" role="alert">
         {{ session('message') }}
     </div>
@@ -14,7 +14,7 @@
     <div class="alert alert-success" role="alert">
         {{ session('status') }}
     </div>
-@endif --}}
+@endif
 
 <nav class="nav">
     <ul class="nav nav-tabs">
@@ -35,6 +35,7 @@
             <th scope="col">ID</th>
             <th scope="col">Room size</th>
             <th scope="col">Hotel id</th>
+            <th scope="col">Hotel</th>
             {{-- @hasrole('admin') --}}
             <th scope="col lighter">Details</th>
             <th scope="col lighter">Edit</th>
@@ -46,8 +47,9 @@
         @foreach($rooms as $room)
         <tr>
             <td scope="row">{{ $room->id }}</td>
-            <td>{{ $room->room_size }}</td>
+            <td>{{ $room->room_size }} personen</td>
             <td>{{ $room->hotel_id }}</td>
+            <td>{{ $room->hotel->name_hotel }}</td>
             <td><a href="{{ route('rooms.show', $room) }}">Details</a></td>
             {{-- @hasrole('admin') --}}
             <td><a href="{{ route('rooms.edit', $room) }}">Edit</a></td>

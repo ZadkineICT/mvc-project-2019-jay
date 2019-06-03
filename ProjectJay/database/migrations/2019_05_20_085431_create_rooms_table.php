@@ -14,15 +14,16 @@ class CreateRoomsTable extends Migration
     public function up()
     {
         Schema::create('rooms', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('room_size', 50);
-            $table->integer('hotel_id')->unsigned()->nullable();
+            $table->increments('id');
+            $table->integer('hotel_id')->unsigned();
+            $table->string('room_size', 2);
             $table->timestamps();
         });
 
         Schema::table('rooms', function($table) {
             $table->engine = "InnoDB";
         });
+
     }
 
     /**

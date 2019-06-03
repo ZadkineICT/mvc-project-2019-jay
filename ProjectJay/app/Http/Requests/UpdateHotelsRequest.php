@@ -23,10 +23,9 @@ class UpdateHotelsRequest extends FormRequest
      */
     public function rules()
     {
-
         return [
             //
-            'name_hotel' => 'required|max:250|unique:hotels,name_hotel',
+            'name_hotel' => 'required|max:250|unique:hotels,name_hotel,' . $this->hotel->id,
             'address' => 'required',
             'zip_code' => 'required',
             'city' => 'required',

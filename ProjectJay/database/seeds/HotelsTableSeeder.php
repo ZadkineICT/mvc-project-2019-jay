@@ -17,7 +17,7 @@ class HotelsTableSeeder extends Seeder
             {
                 // Hier maak je dan per hotel x aantal rooms. Dat zie je bij rand()
 
-                $hotel->room()->saveMany(factory(\App\Room::class, rand(0,50))
+                $hotel->room()->saveMany(factory(\App\Room::class, rand(1,10))
                 ->create(['hotel_id' => $hotel->id]));
             });
     }

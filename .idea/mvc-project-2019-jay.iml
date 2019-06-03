@@ -21,6 +21,7 @@
       <excludeFolder url="file://$MODULE_DIR$/ProjectJay/vendor/jakub-onderka/php-console-highlighter" />
       <excludeFolder url="file://$MODULE_DIR$/ProjectJay/vendor/laravel/framework" />
       <excludeFolder url="file://$MODULE_DIR$/ProjectJay/vendor/laravel/tinker" />
+      <excludeFolder url="file://$MODULE_DIR$/ProjectJay/vendor/laravelcollective/html" />
       <excludeFolder url="file://$MODULE_DIR$/ProjectJay/vendor/league/flysystem" />
       <excludeFolder url="file://$MODULE_DIR$/ProjectJay/vendor/mockery/mockery" />
       <excludeFolder url="file://$MODULE_DIR$/ProjectJay/vendor/monolog/monolog" />
@@ -59,6 +60,7 @@
       <excludeFolder url="file://$MODULE_DIR$/ProjectJay/vendor/sebastian/recursion-context" />
       <excludeFolder url="file://$MODULE_DIR$/ProjectJay/vendor/sebastian/resource-operations" />
       <excludeFolder url="file://$MODULE_DIR$/ProjectJay/vendor/sebastian/version" />
+      <excludeFolder url="file://$MODULE_DIR$/ProjectJay/vendor/spatie/laravel-permission" />
       <excludeFolder url="file://$MODULE_DIR$/ProjectJay/vendor/swiftmailer/swiftmailer" />
       <excludeFolder url="file://$MODULE_DIR$/ProjectJay/vendor/symfony/console" />
       <excludeFolder url="file://$MODULE_DIR$/ProjectJay/vendor/symfony/contracts" />
