@@ -9,14 +9,14 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('reservations.index') }}">List</a>
             </li>
-            {{-- @hasrole('admin') --}}
+            @can('edit reservations')
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('reservations.create') }}">Add </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link active" href="">Details </a>
             </li>
-            {{-- @endhasrole --}}
+            @endcan
         </ul>
     </nav>
 
