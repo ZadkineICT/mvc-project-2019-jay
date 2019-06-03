@@ -9,14 +9,14 @@
 ===================
 */ 
 body {
-    background-color: #161616;
-    color: #d8d8d8;
-    display: grid;
+    background-color: #fff;
+    color: #1a1a1a; 
+    display: grid;  
     grid-template-columns: 15vw 84vw
 }
 
 hr {
-    border-color: #353535;
+    border-color: #b5b5b5;
 }
 
 h3 {
@@ -62,20 +62,20 @@ img {
 }
 
 .hotel-item-title {
-    color:#ffffff;
+    color:#000;
     font-weight: 300;
     font-size:1vw;
     text-align:center;
-    background-color: #353535;
+    background-color: #dddddd;
     border-radius: 5px 5px 0 0;
     padding: 0.6vw 0;
 }
 
 .hotel-item-country {
-    color:white;
+    color:#000;
     font-weight:300;
     padding:0.2vw;
-    background-color:#242424;
+    background-color:#d8d8d8;
     border-radius: 0 0 5px 5px;
 }
 
@@ -207,8 +207,8 @@ nav ul li a:hover {
 }
 .nav-mid {
     float: left;
-    margin:0 28vw;
-    margin-left:30vw;
+    margin:0 5vw;
+    margin-left:2vw;
     width:15vw;
     background-color:#373737;
     border-style: none;
@@ -227,18 +227,31 @@ nav ul li a:hover {
 aside {
     padding-top:3.2vw;
 }
+
 aside ul, label, input[type=checkbox] {
     list-style: none;
     padding:0 0.1vw;
     cursor:pointer;
 }
+
+aside label{
+    display:inline-block;
+}
+
 aside ul li {
-    background-color: #1a1a1a;
     font-size:1vw;
     padding:0.2vw 0.5vw;
     transition: 0.08s ease-in-out;
+    border-bottom-style: solid;
+    border-bottom-width:1px;
+    border-bottom-color:#d3d3d3;
 }
+
 aside ul li:hover {
-    background-color: #404040;
+    background-color: #d8d8d8;
     transition: 0.08s ease-in-out;
+}
+
+aside ul li:hover > label {
+    text-decoration: underline;
 }
