@@ -10,13 +10,13 @@
 */ 
 body {
     background-color: #161616;
-    color: #d8d8d8;
-    display: grid;
+    color: #1a1a1a; 
+    display: grid;  
     grid-template-columns: 15vw 84vw
 }
 
 hr {
-    border-color: #353535;
+    border-color: #b5b5b5#;
 }
 
 h3 {
@@ -62,20 +62,20 @@ img {
 }
 
 .hotel-item-title {
-    color:#ffffff;
+    color:#000;
     font-weight: 300;
     font-size:1vw;
     text-align:center;
-    background-color: #353535;
+    background-color: #dddddd;
     border-radius: 5px 5px 0 0;
     padding: 0.6vw 0;
 }
 
 .hotel-item-country {
-    color:white;
+    color:#000;
     font-weight:300;
     padding:0.2vw;
-    background-color:#242424;
+    background-color:#d8d8d8;
     border-radius: 0 0 5px 5px;
 }
 
