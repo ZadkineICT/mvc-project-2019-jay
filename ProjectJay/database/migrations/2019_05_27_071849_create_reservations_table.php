@@ -25,7 +25,9 @@ class CreateReservationsTable extends Migration
             $table->timestamps();
         });
 
-
+        Schema::table('reservation', function($table) {
+            $table->engine = "InnoDB";
+        });
     }
 
     /**

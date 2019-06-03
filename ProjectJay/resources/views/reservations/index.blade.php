@@ -36,7 +36,7 @@
             <th scope="col">Date start</th>
             <th scope="col">Date end</th>
             <th scope="col">Price</th>
-            <th scope="col">Number of persons</th>
+            <th scope="col">Number of <br>persons</th>
             <th scope="col">User</th>
             <th scope="col">Room</th>
             <th scope="col">Hotel</th>
@@ -56,7 +56,7 @@
                 <td>{{ $reservation->end }}</td>
                 <td>{{ $reservation->price }}</td>
                 <td>{{ $reservation->number_of_persons }}</td>
-                <td>{{ $reservation->user_id}}</td>
+                <td>{{ $reservation->user->name}}</td>
                 <td>{{ $reservation->room_id }}</td>
                 <td>{{ $reservation->hotel_id }}</td>
 
