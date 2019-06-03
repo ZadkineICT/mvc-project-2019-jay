@@ -15,14 +15,14 @@
         <li class="nav-item">
             <a class="nav-link" href="{{ route('hotels.index') }}">List</a>
         </li>
-        {{-- @hasrole('admin') --}}
+        @can('edit hotels')
         <li class="nav-item">
             <a class="nav-link" href="{{ route('hotels.create') }}">Add </a>
         </li>
         <li class="nav-item">
             <a class="nav-link active" href="">Details </a>
         </li>
-        {{-- @endhasrole --}}
+        @endcan
     </ul>
 </nav>
 
