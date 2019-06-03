@@ -40,7 +40,7 @@
     </div>
     <div class="form-group">
         <label>Address</label>
-        <input type="text" name="address" class="form-control" value=""">
+        <input type="text" name="address" class="form-control" value="">
     </div>
     <div class="form-group">
         <label>City</label>
