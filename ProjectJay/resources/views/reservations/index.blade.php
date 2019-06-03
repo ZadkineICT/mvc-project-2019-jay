@@ -56,7 +56,7 @@
                 <td>{{ $reservation->end }}</td>
                 <td>{{ $reservation->price }}</td>
                 <td>{{ $reservation->number_of_persons }}</td>
-                <td>{{ $reservation->user_id }}</td>
+                <td>{{ $reservation->user_id}}</td>
                 <td>{{ $reservation->room_id }}</td>
                 <td>{{ $reservation->hotel_id }}</td>
 

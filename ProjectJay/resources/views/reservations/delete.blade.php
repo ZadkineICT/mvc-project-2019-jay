@@ -48,7 +48,7 @@
         </div>
         <div class="form-group">
             <label>Hotel id</label>
-            <input type="text" name="hotel_id" class="form-control" value="{{ $room->hotel_id }}">
+            <input type="text" name="hotel_id" class="form-control" value="{{ $reservation->hotel_id }}">
         </div>
         <button type="submit" class="btn btn-danger">DELETE</button>
     </form>
