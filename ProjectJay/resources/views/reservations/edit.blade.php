@@ -30,7 +30,7 @@
             {{-- @endhasrole --}}
         </ul>
     </nav>
-
+    @can('edit reservations')
     <form method="POST" action="{{ route('reservations.update', $reservation) }}">
         @csrf
         @method('PUT ')
@@ -72,5 +72,5 @@
         </div> --}}
         <button type="submit" class="btn btn-primary">Edit</button>
     </form>
-
+@endcan
 @endsection
