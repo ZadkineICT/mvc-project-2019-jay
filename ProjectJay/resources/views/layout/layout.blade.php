@@ -7,7 +7,7 @@
     <link rel="icon" href="{{ asset('favicon.ico') }}">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('scss/main.scss') }}" rel="stylesheet">
-    <title>Laravel </title>
+    <title>Hotel Jay </title>
 </head>
 <body>
 <nav>
