@@ -18,6 +18,10 @@ class CreateReservationsHasRoomsTable extends Migration
             $table->integer('room_id')->unsigned();
             $table->timestamps();
         });
+
+        Schema::table('reservation', function($table) {
+            $table->engine = "InnoDB";
+        });
     }
 
     /**

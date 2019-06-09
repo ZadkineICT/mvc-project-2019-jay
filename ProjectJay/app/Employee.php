@@ -11,4 +11,9 @@ class Employee extends Model
     {
         return $this->belongsTo('App\Hotel');
     }
+
+    public function user()
+    {
+        return $this->hasOne('App\User');
+    }
 }

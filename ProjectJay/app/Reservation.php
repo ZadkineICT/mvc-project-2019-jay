@@ -11,4 +11,15 @@ class Reservation extends Model
     {
         return $this->belongsTo('App\User');
     }
+
+    public function hotel()
+    {
+        return $this->belongsTo('App\Hotel');
+    }
+
+    // hasMany() omdat het een many-to-many relation heeft met Room
+    public function room()
+    {
+        return $this->hasMany('App\Room');
+    }
 }

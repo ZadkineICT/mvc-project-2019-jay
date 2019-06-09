@@ -21,6 +21,10 @@ class CreateEmployeesTable extends Migration
             $table->integer('hotel_id')->unsigned();
             $table->timestamps();
         });
+
+        Schema::table('reservation', function($table) {
+            $table->engine = "InnoDB";
+        });
     }
 
     /**

@@ -16,6 +16,11 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Reservation');
     }
+
+    public function employee()
+    {
+        return $this->hasOne('App\Employee');
+    }
     /**
      * The attributes that are mass assignable.
      *
