@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <h1 class="mt-5">Reservations</h1>
+    <h1 class="mt-5">Employees</h1>
 
     @if (session('message'))
         <div class="alert alert-success" role="alert">
@@ -19,13 +19,13 @@
     <nav class="nav">
         <ul class="nav nav-tabs">
             <li class="nav-item">
-                <a class="nav-link active" href="{{ route('reservations.index') }}">List</a>
+                <a class="nav-link active" href="{{ route('employees.index') }}">List</a>
             </li>
-            {{-- @hasrole('admin') --}}
+            @can('edit employees')
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('reservations.create') }}">Add </a>
+                <a class="nav-link" href="{{ route('employees.create') }}">Add </a>
             </li>
-            {{-- @endhasrole --}}
+            @endcan
         </ul>
     </nav>
 
@@ -43,12 +43,9 @@
 
             {{-- @hasrole('admin') --}}
             <th scope="col lighter">Details</th>
-            @can('edit reservations')
             <th scope="col lighter">Edit</th>
-            @endcan
-            @can('delete reservations')
             <th scope="col lighter">Delete</th>
-            @endcan
+            {{-- @endhasrole --}}
         </tr>
         </thead>
         <tbody>
@@ -65,11 +62,10 @@
 
 
                 <td><a href="{{ route('reservations.show', $reservation) }}">Details</a></td>
-                @can('edit reservations')
+                {{-- @hasrole('admin') --}}
                 <td><a href="{{ route('reservations.edit', $reservation) }}">Edit</a></td>
-                @endcan
-                @can('delete reservations')
                 <td><a href="{{ route('reservations.delete', $reservation) }}">Delete</a></td>
+                {{-- @endhasrole --}}
             </tr>
         @endforeach
         </tbody>

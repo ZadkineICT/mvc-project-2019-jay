@@ -32,6 +32,7 @@
 <table class="table table-striped">
     <thead class="thead-dark">
         <tr>
+
             <th scope="col">ID</th>
             <th scope="col">Hotel Name</th>
             <th scope="col">Zip code</th>

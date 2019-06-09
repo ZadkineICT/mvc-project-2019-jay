@@ -21,11 +21,11 @@
         <li class="nav-item">
             <a class="nav-link active" href="{{ route('rooms.index') }}">List</a>
         </li>
-        {{-- @hasrole('admin') --}}
+        @can('edit rooms')
         <li class="nav-item">
             <a class="nav-link" href="{{ route('rooms.create') }}">Add </a>
         </li>
-        {{-- @endhasrole --}}
+       @endcan
     </ul>
 </nav>
 
@@ -38,9 +38,12 @@
             <th scope="col">Hotel</th>
             {{-- @hasrole('admin') --}}
             <th scope="col lighter">Details</th>
+            @can('edit rooms')
             <th scope="col lighter">Edit</th>
+            @endcan
+            @can('delete rooms')
             <th scope="col lighter">Delete</th>
-            {{-- @endhasrole --}}
+            @endcan
         </tr>
     </thead>
     <tbody>
@@ -51,9 +54,12 @@
             <td>{{ $room->hotel_id }}</td>
             <td>{{ $room->hotel->name_hotel }}</td>
             <td><a href="{{ route('rooms.show', $room) }}">Details</a></td>
-            {{-- @hasrole('admin') --}}
+            @can('edit rooms')
             <td><a href="{{ route('rooms.edit', $room) }}">Edit</a></td>
+            @endcan
+            @can('delete rooms')
             <td><a href="{{ route('rooms.delete', $room) }}">Delete</a></td>
+            @endcan
             {{-- @endhasrole --}}
         </tr>
         @endforeach

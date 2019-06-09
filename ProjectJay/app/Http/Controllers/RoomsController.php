@@ -56,7 +56,7 @@ class RoomsController extends Controller
 
         $room->save();
 
-        return redirect()->route('rooms.index');
+        return redirect()->route('rooms.index')->with('status', 'Added Room');
     }
 
     /**

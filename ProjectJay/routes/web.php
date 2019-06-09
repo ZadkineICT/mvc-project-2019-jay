@@ -23,13 +23,6 @@ Route::group(['middleware' => ['role:owner|admin|client']], function (){
     Route::resource('/hotels', 'HotelsController');
 });
 
-use App\Hotel;
-
-Route::get('/frontpage', function () {
-    $hotels = Hotel::all();
-    return view('frontpage', compact('hotels'));
-});
-
 Route::group(['middleware' => ['role:owner|admin']], function () {
     Route::get('/rooms/{room}/delete', 'RoomsController@delete')->name('rooms.delete');
     Route::resource('/rooms', 'RoomsController');
@@ -38,6 +31,18 @@ Route::group(['middleware' => ['role:owner|admin']], function () {
 Route::group(['middleware' => ['role:owner|admin']], function () {
     Route::get('/reservations/{reservation}/delete', 'ReservationsController@delete')->name('reservations.delete');
     Route::resource('/reservations', 'ReservationsController');
+});
+
+Route::group(['middleware' => ['role:owner|admin']], function () {
+    Route::get('/roomtypes/{roomtype}/delete', 'RoomtypesController@delete')->name('roomtypes.delete');
+    Route::resource('/roomtypes', 'RoomtypesController');
+});
+
+use App\Hotel;
+
+Route::get('/frontpage', function () {
+    $hotels = Hotel::all();
+    return view('frontpage', compact('hotels'));
 });
 
 Auth::routes();

@@ -13,6 +13,6 @@ $factory->define(Reservation::class, function (Faker $faker) {
         'number_of_persons' => $faker->numberBetween(1,6),
         'user_id' => \App\User::all()->random()->id,
         'room_id' => \App\Room::all()->random()->id,
-        'hotel_id' => \App\Hotel::all()->random()->id,
+        'hotel_id' => \App\Hotel::all()->random()->id
     ];
 });

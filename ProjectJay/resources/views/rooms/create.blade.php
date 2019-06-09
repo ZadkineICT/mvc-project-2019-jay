@@ -20,14 +20,14 @@
         <li class="nav-item">
             <a class="nav-link " href="{{ route('rooms.index') }}">List</a>
         </li>
-        @can('edit rooms')
+        @can('create rooms')
         <li class="nav-item">
             <a class="nav-link active" href="{{ route('rooms.create') }}">Add </a>
         </li>
         @endcan
     </ul>
 </nav>
-
+@can('create rooms')
 <form action="{{ route('rooms.index') }}" method="POST">
     @csrf
     <div class="form-group">
@@ -48,5 +48,5 @@
     </div> --}}
     <button type="submit" class="btn btn-primary">Add</button>
 </form>
-
+@endcan
 @endsection

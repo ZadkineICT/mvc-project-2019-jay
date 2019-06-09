@@ -27,7 +27,7 @@
             @endcan
         </ul>
     </nav>
-
+    @can('create reservations')
     <form action="{{ route('reservations.index') }}" method="POST">
         @csrf
         <div class="form-group">
@@ -68,5 +68,5 @@
         </div> --}}
         <button type="submit" class="btn btn-primary">Add</button>
     </form>
-
+@endcan
 @endsection
