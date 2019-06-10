@@ -61,7 +61,7 @@
                 <td>{{ $reservation->number_of_persons }}</td>
                 <td>{{ $reservation->user->name}}</td>
                 <td>{{ $reservation->room_id }}</td>
-                <td>{{ $reservation->hotel_id }}</td>
+                <td>{{ $reservation->hotel->name_hotel }}</td>
 
 
                 <td><a href="{{ route('reservations.show', $reservation) }}">Details</a></td>
@@ -70,6 +70,7 @@
                 @endcan
                 @can('delete reservations')
                 <td><a href="{{ route('reservations.delete', $reservation) }}">Delete</a></td>
+                @endcan
             </tr>
         @endforeach
         </tbody>

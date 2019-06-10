@@ -39,27 +39,27 @@
         @method('PUT ')
         <div class="form-group">
             <label>Date start</label>
-            <input type="text" class="form-control" name="room_size" value="{{ $reservation->start}}">
+            <input type="text" class="form-control" name="start" value="{{ $reservation->start}}">
         </div>
         <div class="form-group">
             <label>Date end</label>
-            <input type="text" class="form-control" name="room_size" value="{{ $reservation->end}}">
+            <input type="text" class="form-control" name="end" value="{{ $reservation->end}}">
         </div>
         <div class="form-group">
             <label>Price</label>
-            <input type="text" class="form-control" name="room_size" value="{{ $reservation->price}}">
+            <input type="text" class="form-control" name="price" value="{{ $reservation->price}}">
         </div>
         <div class="form-group">
             <label>Number of persons</label>
-            <input type="text" class="form-control" name="room_size" value="{{ $reservation->number_of_persons}}">
+            <input type="text" class="form-control" name="number_of_persons" value="{{ $reservation->number_of_persons}}">
         </div>
         <div class="form-group">
             <label>User</label>
-            <input type="text" class="form-control" name="room_size" value="{{ $reservation->user_id}}">
+            <input type="text" class="form-control" name="user_id" value="{{ $reservation->user_id}}">
         </div>
         <div class="form-group">
             <label>Room</label>
-            <input type="text" class="form-control" name="room_size" value="{{ $reservation->room_id}}">
+            <input type="text" class="form-control" name="room_id" value="{{ $reservation->room_id}}">
         </div>
         <div class="form-group">
             <label>Hotel</label>

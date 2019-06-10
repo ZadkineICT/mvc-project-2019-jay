@@ -17,6 +17,7 @@ class CreateReservationsTable extends Migration
             $table->increments('id');
             $table->date('start');
             $table->date('end');
+            $table->decimal('price',6,2);
             $table->string('number_of_persons',20);
             $table->integer('user_id')->unsigned();
             $table->integer('room_id')->unsigned();

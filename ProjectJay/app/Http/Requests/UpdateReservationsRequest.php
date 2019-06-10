@@ -13,7 +13,7 @@ class UpdateReservationsRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -25,13 +25,13 @@ class UpdateReservationsRequest extends FormRequest
     {
         return [
             //
-            'start' => 'required|unique:hotels',
+            'start' => 'required',
             'end' => 'required',
-            'price' => 'required|numeric',
+            'price' => 'required',
             'number_of_persons' => 'required',
             'user_id' => 'required',
             'room_id' => 'required',
-            'hotel_id' => 'required',
+            'hotel_id' => 'required'
         ];
     }
 }
