@@ -98,7 +98,7 @@ class RoomtypesController extends Controller
 
         $roomtype->save();
 
-        return redirect()->route('roomtype.index')->with('status', 'Roomtype updated');
+        return redirect()->route('roomtypes.index')->with('status', 'Roomtype updated');
     }
 
     /**

@@ -25,7 +25,8 @@ class StoreRoomsRequest extends FormRequest
     {
         return [
             'room_size' => 'required',
-            'hotel_id' => 'required'
+            'hotel_id' => 'required',
+            'roomtype_id' => 'required'
         ];
     }
 }

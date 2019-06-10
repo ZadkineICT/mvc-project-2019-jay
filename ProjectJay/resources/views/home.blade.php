@@ -28,6 +28,7 @@
                             <li><a href="{{ route('hotels.index') }}">Hotels</a></li>
                             <li><a href="{{ route('rooms.index') }}">Rooms</a></li>
                             <li><a href="{{ route('reservations.index') }}">Reservations</a></li>
+                            <li><a href="{{ route('roomtypes.index') }}">Roomtypes</a></li>
                         </ul>
                     </div>
                 </div>

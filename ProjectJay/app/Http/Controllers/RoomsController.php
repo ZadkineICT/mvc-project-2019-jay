@@ -53,6 +53,7 @@ class RoomsController extends Controller
         $room = new Room();
         $room->room_size = $request->room_size;
         $room->hotel_id = $request->hotel_id;
+        $room->roomtype_id = $request->roomtype_id;
 
         $room->save();
 
@@ -95,6 +96,7 @@ class RoomsController extends Controller
         //
         $room->room_size = $request->room_size;
         $room->hotel_id = $request->hotel_id;
+        $room->roomtype_id = $request->roomtype_id;
 
         $room->save();
 

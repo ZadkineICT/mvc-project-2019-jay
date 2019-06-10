@@ -38,6 +38,10 @@
         <label>Hotel ID</label>
         <input type="text" class="form-control" name="hotel_id" value="">
     </div>
+    <div class="form-group">
+        <label>Roomtype</label>
+        <input type="text" class="form-control" name="roomtype_id" value="">
+    </div>
     {{-- <div class="form-group">
         <label>Category</label>
         <select class="form-control" name="category_id">

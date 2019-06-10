@@ -36,6 +36,7 @@
             <th scope="col">Room size</th>
             <th scope="col">Hotel id</th>
             <th scope="col">Hotel</th>
+            <th scope="col">Roomtype</th>
             {{-- @hasrole('admin') --}}
             <th scope="col lighter">Details</th>
             @can('edit rooms')
@@ -53,6 +54,7 @@
             <td>{{ $room->room_size }} personen</td>
             <td>{{ $room->hotel_id }}</td>
             <td>{{ $room->hotel->name_hotel }}</td>
+            <td>{{ $room->roomtype->name }}</td>
             <td><a href="{{ route('rooms.show', $room) }}">Details</a></td>
             @can('edit rooms')
             <td><a href="{{ route('rooms.edit', $room) }}">Edit</a></td>

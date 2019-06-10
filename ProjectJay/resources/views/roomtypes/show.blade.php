@@ -2,16 +2,16 @@
 
 @section('content')
 
-<h1 class="mt-5">Room details</h1>
+<h1 class="mt-5">Roomtype details</h1>
 
 <nav class="nav">
     <ul class="nav nav-tabs">
         <li class="nav-item">
-            <a class="nav-link" href="{{ route('rooms.index') }}">List</a>
+            <a class="nav-link" href="{{ route('roomtypes.index') }}">List</a>
         </li>
-        @can('edit rooms')
+        @can('edit roomtypes')
         <li class="nav-item">
-            <a class="nav-link" href="{{ route('rooms.create') }}">Add </a>
+            <a class="nav-link" href="{{ route('roomtypes.create') }}">Add </a>
         </li>
         <li class="nav-item">
             <a class="nav-link active" href="">Details </a>
@@ -22,28 +22,23 @@
 
 <div class="card" style="width: 100%;">
     <div class="card-header">
-        Room Details
+        Roomtype Details
     </div>
     <ul class="list-group list-group-flush" style="list-style-type: none">
         <li class="list-group-item">
             Id
             <br>
-            {{ $room->id }}
+            {{ $roomtype->id }}
         </li>
         <li class="list-group-item">
-            Room Name
+            Name
             <br>
-            {{ $room->room_size }}
+            {{ $roomtype->name }}
         </li>
         <li class="list-group-item">
-            Hotel ID
+            Price
             <br>
-            {{ $room->hotel_id }}
-        </li>
-        <li class="list-group-item">
-            Roomtype
-            <br>
-            {{ $room->roomtype_id }}
+            {{ $roomtype->price }}
         </li>
     </ul>
 </div>

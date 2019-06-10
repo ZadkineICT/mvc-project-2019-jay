@@ -43,6 +43,10 @@
         <label>Hotel id</label>
         <input type="text" name="hotel_id" class="form-control" value="{{ $room->hotel_id }}">
     </div>
+    <div class="form-group">
+        <label>Roomtype</label>
+        <input type="text" name="roomtype_id" class="form-control" value="{{ $room->roomtype_id }}">
+    </div>
     {{-- <div class="form-group">
         <label>Category</label>
         <select class="form-control" name="category_id">
