@@ -34,6 +34,11 @@ Route::group(['middleware' => ['role:owner|admin']], function () {
 });
 
 Route::group(['middleware' => ['role:owner|admin']], function () {
+    Route::get('/employees/{employee}/delete', 'EmployeesController@delete')->name('employees.delete');
+    Route::resource('/employees', 'EmployeesController');
+});
+
+Route::group(['middleware' => ['role:owner|admin']], function () {
     Route::get('/roomtypes/{roomtype}/delete', 'RoomtypesController@delete')->name('roomtypes.delete');
     Route::resource('/roomtypes', 'RoomtypesController');
 });

@@ -25,7 +25,7 @@
                 <a class="nav-link" href="{{ route('reservations.create') }}">Add </a>
             </li>
             @endcan
-            @can('edit hotels')
+            @can('edit reservations')
             <li class="nav-item">
                 <a class="nav-link active" href="">Edit </a>
             </li>

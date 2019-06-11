@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Employee;
+use App\Http\Requests\StoreEmployeesRequest;
+use App\Http\Requests\UpdateEmployeesRequest;
 use Illuminate\Http\Request;
 
 class EmployeesController extends Controller
@@ -12,13 +14,20 @@ class EmployeesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function __construct()
     {
-        //
         $this->middleware('auth');
         $this->middleware('permission:create employees',['only' => ['create', 'store']]);
         $this->middleware('permission:edit employees',['only' => ['edit', 'update']]);
         $this->middleware('permission:delete employees',['only' => ['delete', 'destroy']]);
+    }
+
+    public function index()
+    {
+        //
+        $employees = Employee::all();
+
+        return view('employees.index', compact('employees'));
     }
 
     /**
@@ -29,9 +38,7 @@ class EmployeesController extends Controller
     public function create()//
     {
         //
-        $employees = Employee::all();
-
-        return view('employees.index', compact('employees'));
+        return view('employees.create');
     }
 
     /**
@@ -40,9 +47,18 @@ class EmployeesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreEmployeesRequest $request)
     {
         //
+        $employee = new Employee();
+        $employee->date_of_birth = $request->date_of_birth;
+        $employee->position = $request->position;
+        $employee->user_id = $request->user_id;
+        $employee->hotel_id = $request->hotel_id;
+
+        $employee->save();
+
+        return redirect()->route('employees.index')->with('status', 'Added Employee');
     }
 
     /**
@@ -54,6 +70,7 @@ class EmployeesController extends Controller
     public function show(Employee $employee)
     {
         //
+        return view('employees.show', compact('employee'));
     }
 
     /**
@@ -65,6 +82,7 @@ class EmployeesController extends Controller
     public function edit(Employee $employee)
     {
         //
+        return view('employees.edit', compact('employee'));
     }
 
     /**
@@ -74,9 +92,17 @@ class EmployeesController extends Controller
      * @param  \App\Employee  $employee
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Employee $employee)
+    public function update(UpdateEmployeesRequest $request, Employee $employee)
     {
         //
+        $employee->date_of_birth = $request->date_of_birth;
+        $employee->position = $request->position;
+        $employee->user_id = $request->user_id;
+        $employee->hotel_id = $request->hotel_id;
+
+        $employee->save();
+
+        return redirect()->route('employees.index')->with('status', 'Updated Employee');
     }
 
     /**
@@ -85,8 +111,16 @@ class EmployeesController extends Controller
      * @param  \App\Employee  $employee
      * @return \Illuminate\Http\Response
      */
+    public function delete(Employee $employee)
+    {
+        //
+        return view('employees.delete', compact('employee'));
+    }
+
     public function destroy(Employee $employee)
     {
         //
+        $employee->delete();
+        return redirect()->route('employees.index')->with('status', 'Employee deleted');
     }
 }

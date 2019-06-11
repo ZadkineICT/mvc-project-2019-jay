@@ -97,7 +97,6 @@ class ReservationsController extends Controller
     public function update(UpdateReservationsRequest $request, Reservation $reservation)
     {
         //
-        $reservation = new Reservation();
         $reservation->start = $request->start;
         $reservation->end = $request->end;
         $reservation->price = $request->price;

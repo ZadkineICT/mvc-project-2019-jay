@@ -33,39 +33,38 @@
         <thead class="thead-dark">
         <tr>
             <th scope="col">ID</th>
-            <th scope="col">Date start</th>
-            <th scope="col">Date end</th>
-            <th scope="col">Price</th>
-            <th scope="col">Number of <br>persons</th>
+            <th scope="col">Date of birth</th>
+            <th scope="col">Position</th>
             <th scope="col">User</th>
-            <th scope="col">Room</th>
             <th scope="col">Hotel</th>
 
             {{-- @hasrole('admin') --}}
             <th scope="col lighter">Details</th>
+            @can('edit employees')
             <th scope="col lighter">Edit</th>
+            @endcan
+            @can('delete employees')
             <th scope="col lighter">Delete</th>
-            {{-- @endhasrole --}}
+            @endcan
         </tr>
         </thead>
         <tbody>
-        @foreach($reservations as $reservation)
+        @foreach($employees as $employee)
             <tr>
-                <td scope="row">{{ $reservation->id }}</td>
-                <td>{{ $reservation->start}}</td>
-                <td>{{ $reservation->end }}</td>
-                <td>{{ $reservation->price }}</td>
-                <td>{{ $reservation->number_of_persons }}</td>
-                <td>{{ $reservation->user->name}}</td>
-                <td>{{ $reservation->room_id }}</td>
-                <td>{{ $reservation->hotel_id }}</td>
+                <td scope="row">{{ $employee->id }}</td>
+                <td>{{ $employee->date_of_birth}}</td>
+                <td>{{ $employee->position }}</td>
+                <td>{{ $employee->user_id}}</td>
+                <td>{{ $employee->hotel_id }}</td>
 
 
-                <td><a href="{{ route('reservations.show', $reservation) }}">Details</a></td>
-                {{-- @hasrole('admin') --}}
-                <td><a href="{{ route('reservations.edit', $reservation) }}">Edit</a></td>
-                <td><a href="{{ route('reservations.delete', $reservation) }}">Delete</a></td>
-                {{-- @endhasrole --}}
+                <td><a href="{{ route('employees.show', $employee) }}">Details</a></td>
+                @can('edit employees')
+                <td><a href="{{ route('employees.edit', $employee) }}">Edit</a></td>
+                @endcan
+                @can('delete employees')
+                <td><a href="{{ route('employees.delete', $employee) }}">Delete</a></td>
+                @endcan
             </tr>
         @endforeach
         </tbody>
