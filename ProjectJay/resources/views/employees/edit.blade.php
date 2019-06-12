@@ -25,9 +25,11 @@
                     <a class="nav-link" href="{{ route('employees.create') }}">Add </a>
                 </li>
             @endcan
+            @can('edit employees')
             <li class="nav-item">
                 <a class="nav-link active" href="">Edit </a>
             </li>
+            @endcan
         </ul>
     </nav>
 
