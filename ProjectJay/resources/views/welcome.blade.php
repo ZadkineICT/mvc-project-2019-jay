@@ -88,7 +88,7 @@
                     <a href="{{ route('hotels.index') }}">Hotels</a>
                     <a href="{{ route('rooms.index') }}">Rooms</a>
                     <a href="{{ route('reservations.index') }}">Reservations</a>
-                    <a href="{{ route('reservations.index') }}">Employees</a>
+                    <a href="{{ route('employees.index') }}">Employees</a>
                     <a href="{{ route('roomtypes.index') }}">Roomtypes</a>
                     <a href="/frontpage">Front Page</a>
                 </div>

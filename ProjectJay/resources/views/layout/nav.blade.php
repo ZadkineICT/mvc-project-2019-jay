@@ -6,6 +6,7 @@
     <li><a class="nav-left" href="{{ route('hotels.show', '') }}">Hotels</a></li>
     <li><a class="nav-left" href="{{ route('rooms.show', '') }}">Rooms</a></li>
     <li><a class="nav-left" href="{{ route('reservations.show', '') }}">Reservations</a></li>
+    <li><a class="nav-left" href="{{ route('employees.show', '') }}">Employees</a></li>
     <li><a class="nav-left" href="{{ route('roomtypes.show', '') }}">Roomtypes</a></li>
     <li><a class="nav-left" href="/home">User-home</a></li>
 
