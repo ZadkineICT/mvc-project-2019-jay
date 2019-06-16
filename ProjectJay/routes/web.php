@@ -18,7 +18,7 @@ Route::get('/', function () {
 // Route::get('/hotel', function () {
 //     return view('hotel.index');
 // });
-Route::group(['middleware' => ['role:owner|admin|client']], function (){
+Route::group(['middleware' => ['role:owner|admin|client']], function () {
     Route::get('/hotels/{hotel}/delete', 'HotelsController@delete')->name('hotels.delete');
     Route::resource('/hotels', 'HotelsController');
 });
@@ -41,6 +41,11 @@ Route::group(['middleware' => ['role:owner|admin']], function () {
 Route::group(['middleware' => ['role:owner|admin']], function () {
     Route::get('/roomtypes/{roomtype}/delete', 'RoomtypesController@delete')->name('roomtypes.delete');
     Route::resource('/roomtypes', 'RoomtypesController');
+});
+
+Route::group(['middleware' => ['role:owner|admin']], function () {
+    Route::get('/reviews/{review}/delete', 'ReviewsController@delete')->name('reviews.delete');
+    Route::resource('/reviews', 'ReviewsController');
 });
 
 use App\Hotel;
