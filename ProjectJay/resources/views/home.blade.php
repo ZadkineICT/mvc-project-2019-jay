@@ -13,8 +13,11 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
-                    You are logged in!
+                        <div class="links">
+                            <ul>
+                                <li><a href="{{ route('password.reset') }}">Change Password</a></li>
+                            </ul>
+                        </div>
                 </div>
             </div>
             <br>
