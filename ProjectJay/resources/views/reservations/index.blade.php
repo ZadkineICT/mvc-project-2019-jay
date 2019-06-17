@@ -32,7 +32,9 @@
     <table class="table table-striped">
         <thead class="thead-dark">
         <tr>
+            @hasrole('admin|owner')
             <th scope="col">ID</th>
+            @endhasrole
             <th scope="col">Date start</th>
             <th scope="col">Date end</th>
             <th scope="col">Price</th>
@@ -54,7 +56,9 @@
         <tbody>
         @foreach($reservations as $reservation)
             <tr>
+                @hasrole('admin|owner')
                 <td scope="row">{{ $reservation->id }}</td>
+                @endhasrole
                 <td>{{ $reservation->start}}</td>
                 <td>{{ $reservation->end }}</td>
                 <td>{{ $reservation->price }}</td>

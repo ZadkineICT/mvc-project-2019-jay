@@ -34,11 +34,13 @@
         Hotel Details
     </div>
     <ul class="list-group list-group-flush" style="list-style-type: none">
+        @hasrole('owner|admin')
         <li class="list-group-item">
             Id
             <br>
             {{ $hotel->id }}
         </li>
+        @endhasrole
         <li class="list-group-item">
             Hotel Name
             <br>

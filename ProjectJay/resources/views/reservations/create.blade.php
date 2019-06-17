@@ -32,11 +32,11 @@
         @csrf
         <div class="form-group">
             <label>Date start</label>
-            <input type="text" class="form-control" name="start" value="">
+            <input type="date" class="form-control" name="start" value="date">
         </div>
         <div class="form-group">
             <label>Date end</label>
-            <input type="text" class="form-control" name="end" value="">
+            <input type="date" class="form-control" name="end" value="date">
         </div>
         <div class="form-group">
             <label>Price</label>
@@ -44,7 +44,7 @@
         </div>
         <div class="form-group">
             <label>Number of persons</label>
-            <input type="text" class="form-control" name="number_of_persons" value="">
+            <input type="number" class="form-control" name="number_of_persons" min="1" max="6" step="1" value="">
         </div>
         <div class="form-group">
             <label>User</label>
