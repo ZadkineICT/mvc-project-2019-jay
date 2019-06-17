@@ -18,7 +18,8 @@ Route::get('/', function () {
 // Route::get('/hotel', function () {
 //     return view('hotel.index');
 // });
-Route::group(['middleware' => ['role:owner|admin|client']], function () {
+
+Route::group(['middleware' => ['role:owner|admin']], function () {
     Route::get('/hotels/{hotel}/delete', 'HotelsController@delete')->name('hotels.delete');
     Route::resource('/hotels', 'HotelsController');
 });
@@ -71,6 +72,9 @@ Route::group(['prefix' => 'admin','namespace' => 'Auth'],function(){
 });
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/hotels/{hotel}', 'HotelsController@show')->name('hotels.show');
+Route::get('/reservations/create', 'ReservationsController@create')->name('reservations.create');
+Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 /*
 Route::group(['middleware' => ['guest']], function () {
     Route::get('/hotels/{hotel}', 'HotelsController@show')->name('hotels.show');
