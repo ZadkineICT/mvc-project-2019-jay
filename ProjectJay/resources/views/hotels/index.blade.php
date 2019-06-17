@@ -28,7 +28,6 @@
         @endcan
     </ul>
 </nav>
-
 <table class="table table-striped">
     <thead class="thead-dark">
         <tr>
@@ -76,5 +75,4 @@
         </div>  
     </tbody>
 </table>
-
 @endsection

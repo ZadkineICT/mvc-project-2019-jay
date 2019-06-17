@@ -71,3 +71,14 @@ Route::group(['prefix' => 'admin','namespace' => 'Auth'],function(){
 });
 
 Route::get('/home', 'HomeController@index')->name('home');
+/*
+Route::group(['middleware' => ['guest']], function () {
+    Route::get('/hotels/{hotel}', 'HotelsController@show')->name('hotels.show');
+    Route::resource('/hotels', 'HotelsController');
+});
+
+Route::group(['middleware' => ['guest']], function () {
+    Route::get('/reservations/create', 'ReservationsController@create')->name('reservations.create');
+    Route::resource('/reservations', 'ReservationsController');
+});
+/*
