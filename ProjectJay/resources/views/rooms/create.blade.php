@@ -32,24 +32,25 @@
     @csrf
     <div class="form-group">
         <label>Room Size</label>
-        <input type="text" class="form-control" name="room_size" value="">
+        <input type="number" class="form-control" name="room_size" min="1   " step="1" value="">
     </div>
     <div class="form-group">
-        <label>Hotel ID</label>
-        <input type="text" class="form-control" name="hotel_id" value="">
-    </div>
-    <div class="form-group">
-        <label>Roomtype</label>
-        <input type="text" class="form-control" name="roomtype_id" value="">
-    </div>
-    {{-- <div class="form-group">
-        <label>Category</label>
-        <select class="form-control" name="category_id">
-            @foreach ($categories as $category)
-                <option value="{{ $category->id }}">{{ $category->name }}</option>
+        <label>Hotel</label>
+        <select class="form-control" name="hotel_id">
+            @foreach ($hotels as $hotel)
+                <option value="{{ $hotel->id }}">{{ $hotel->id }} {{ $hotel->name_hotel }}</option>
             @endforeach
         </select>
-    </div> --}}
+    </div>
+    <div class="form-group">
+        <label>Roomtypes</label>
+        <select class="form-control" name="roomtype_id">
+            @foreach ($roomtypes as $roomtype)
+                <option value="{{ $roomtype->id }}">{{ $roomtype->id }} {{ $roomtype->name }}</option>
+            @endforeach
+        </select>
+    </div>
+    
     <button type="submit" class="btn btn-primary">Add</button>
 </form>
 @endcan

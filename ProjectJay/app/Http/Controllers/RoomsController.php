@@ -6,15 +6,16 @@ use App\Room;
 use App\Http\Requests\StoreRoomsRequest;
 use App\Http\Requests\UpdateRoomsRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class RoomsController extends Controller
 {
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('permission:create rooms',['only' => ['create', 'store']]);
-        $this->middleware('permission:edit rooms',['only' => ['edit', 'update']]);
-        $this->middleware('permission:delete rooms',['only' => ['delete', 'destroy']]);
+        $this->middleware('permission:create rooms', ['only' => ['create', 'store']]);
+        $this->middleware('permission:edit rooms', ['only' => ['edit', 'update']]);
+        $this->middleware('permission:delete rooms', ['only' => ['delete', 'destroy']]);
     }
 
     /**
@@ -26,6 +27,8 @@ class RoomsController extends Controller
     {
         //
         $rooms = Room::all();
+        $rooms = Room::with('hotel')->get();
+        $rooms = Room::with('roomtype')->get();
 
         return view('rooms.index', compact('rooms'));
     }
@@ -38,7 +41,10 @@ class RoomsController extends Controller
     public function create()
     {
         //
-        return view('rooms.create');
+        $hotels = DB::table('hotels')->select('id', 'name_hotel')->get();
+        $roomtypes = DB::table('roomtypes')->select('id', 'name')->get();
+
+        return view('rooms.create', compact('hotels', 'roomtypes'));
     }
 
     /**
