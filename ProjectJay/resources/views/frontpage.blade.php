@@ -51,7 +51,7 @@
 <div class="hotel-list">
     <ul class="row">
         @foreach($hotels as $hotel)
-        <li class="col-lg-4 col-sm-1 ustify-content-around hotel-item">
+        <li class="col-lg-4 col-sm-1 hotel-item">
             <ul>
                 <a href="{{ route('hotels.show', $hotel) }}">
                     <li class="hotel-item-title">{{ $hotel->name_hotel }}</li>
