@@ -19,15 +19,12 @@
         <ul class="nav nav-tabs">
             <li class="nav-item">
                 <a class="nav-link " href="{{ route('reservations.index') }}">List</a>
-            </li>
-            @can('create reservations')
+            </li>\
             <li class="nav-item">
                 <a class="nav-link active" href="{{ route('reservations.create') }}">Add </a>
             </li>
-            @endcan
         </ul>
     </nav>
-    @can('create reservations')
     <form action="{{ route('reservations.index') }}" method="POST">
         @csrf
         <div class="form-group">
@@ -68,5 +65,4 @@
         </div> --}}
         <button type="submit" class="btn btn-primary">Add</button>
     </form>
-@endcan
 @endsection

@@ -28,7 +28,6 @@
         @endcan
     </ul>
 </nav>
-
 <table class="table table-striped">
     <thead class="thead-dark">
         <tr>
@@ -39,7 +38,9 @@
             <th scope="col">Address</th>
             <th scope="col">City</th>
             <th scope="col">Country</th>
+            @can('create rooms')
             <th scope="col">Rooms</th>
+            @endcan
             <th scope="col lighter">Details</th>
             @can('edit hotels')
             <th scope="col lighter">Edit</th>
@@ -53,15 +54,17 @@
         <div class="admin-list">
             <ul class="row">
                 @foreach($hotels as $hotel)
-                <td class="ustify-content-around hotel-item-admin">
+                <td class="justify-content-around hotel-item-admin">
                     <tr>
                         <td>{{ $hotel->id }}</td>
                         <td>{{ $hotel->name_hotel }}</td>
                         <td>{{ $hotel->zip_code }}</td>
                         <td>{{ $hotel->address }}</td>
                         <td>{{ $hotel->city }}</td>
-                        <td>{{ $hotel->country }}</td>
-                        <td>{{ $rooms }}</td>
+                        <td>{{ $hotel->country }}
+                        @can('create rooms')
+                        <td><a href="{{ route('rooms.create') }}">Add Room</a></td>
+                        @endcan
                         <td><a href="{{ route('hotels.show', $hotel) }}">Details</a></td>
                         @can('edit hotels')
                         <td><a href="{{ route('hotels.edit', $hotel) }}">Edit</a></td>
@@ -76,5 +79,4 @@
         </div>  
     </tbody>
 </table>
-
 @endsection

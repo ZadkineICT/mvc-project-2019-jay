@@ -23,6 +23,9 @@
             <a class="nav-link active" href="">Details </a>
         </li>
         @endcan
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('reservations.create') }}">Reserveer</a>
+        </li>
     </ul>
 </nav>
 
