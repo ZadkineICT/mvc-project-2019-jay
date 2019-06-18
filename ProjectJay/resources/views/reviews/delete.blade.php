@@ -20,7 +20,7 @@
     @method('DELETE')
     <div class="form-group">
         <label>Message</label>
-        <textarea type="text" class="form-control" name="message">{{ $review->date }}</textarea>
+        <textarea type="text" class="form-control" name="message">{{ $review->message }}</textarea>
     </div>
     <div class="form-group">
         <label>Stars</label>

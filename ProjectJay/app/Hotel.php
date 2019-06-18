@@ -21,4 +21,9 @@ class Hotel extends Model
     {
         return $this->hasMany('App\Reservation');
     }
+
+    public function review()
+    {
+        return $this->hasMany('App\Review');
+    }
 }
