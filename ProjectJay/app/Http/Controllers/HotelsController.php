@@ -12,7 +12,6 @@ class HotelsController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
         $this->middleware('permission:create hotels',['only' => ['create', 'store']]);
         $this->middleware('permission:edit hotels',['only' => ['edit', 'update']]);
         $this->middleware('permission:delete hotels',['only' => ['delete', 'destroy']]);
@@ -25,6 +24,7 @@ class HotelsController extends Controller
     public function index()
     {
         //
+        $this->middleware('auth');
         $hotels = Hotel::all();
         $rooms = Room::all()->count();
         return view('hotels.index', compact('hotels'), compact('rooms'));

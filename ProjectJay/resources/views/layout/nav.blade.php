@@ -24,7 +24,7 @@
                 <a class="nav-link nav-right" href="{{ route('login') }}">{{ __('Login') }}</a>
             </li>
         @else
-            <li class="nav-right nav-item dropdown">
+            <div class="nav-right nav-item dropdown">
                 <ul>
                     <li>
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -36,7 +36,7 @@
                             <a class="dropdown-item" href="{{ route('logout') }}"
                             onclick="event.preventDefault();
                                                             document.getElementById('logout-form').submit();">
-                                {{ __('Logout') }}
+                                {{ __('Logout') }}test
                             </a>
 
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -45,7 +45,7 @@
                         </div>
                     </li>
                 </ul>   
-            </li>
+            </div>
         @endguest
 </ul>
 @endsection 
