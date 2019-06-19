@@ -1,5 +1,6 @@
 <?php
-
+use App\Hotel;
+use Illuminate\Support\Facades\Input;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,6 +15,15 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::any ( '/search', function () {
+    $q = Input::get ( 'q' );
+    $hotel = Hotel::where ( 'name_hotel', 'LIKE', '%' . $q . '%' )->orWhere ( 'country', 'LIKE', '%' . $q . '%' )->get ();
+    if (count ( $hotel ) > 0)
+        return view ( 'search' )->withDetails ( $hotel )->withQuery ( $q );
+    else
+        return view ( 'search' )->withMessage ( 'No Details found. Try to search again !' );
+} );
 
 // Route::get('/hotel', function () {
 //     return view('hotel.index');
@@ -49,7 +59,6 @@ Route::group(['middleware' => ['role:owner|admin']], function () {
     Route::resource('/reviews', 'ReviewsController');
 });
 
-use App\Hotel;
 
 Route::get('/frontpage', function () {
     $hotels = Hotel::all();
