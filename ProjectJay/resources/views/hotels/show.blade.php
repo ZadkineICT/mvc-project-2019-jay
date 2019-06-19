@@ -15,9 +15,6 @@
         <li class="nav-item">
             <a class="nav-link" href="{{ route('hotels.index') }}">List</a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link active" href="{{ route('reservations.create') }}">Reserveren </a>
-        </li>
         @can('edit hotels')
         <li class="nav-item">
             <a class="nav-link" href="{{ route('hotels.create') }}">Add </a>
