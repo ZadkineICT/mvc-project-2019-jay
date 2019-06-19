@@ -11,27 +11,6 @@
     <li><a class="nav-left" href="{{ route('reviews.show', '') }}">Reviews</a></li>
     <li><a class="nav-left" href="/home">User-home</a></li>
 
-        <form action="/search" method="POST" role="search">
-        {{ csrf_field() }}
-            <li><form action="" method="GET"><input class="nav-mid" type="text" name="hotel" placeholder="Search" required/></form></li>
-    </form>
-
-    <form action="/search" method="POST" role="search">
-        {{ csrf_field() }}
-        <div class="input-group zoekbalk">
-            <input type="text" class="form-control" name="q"
-                   placeholder="Search for products by name or price..."> <span class="input-group-btn">
-            <button type="submit" class="btn btn-default">
-                <span class="glyphicon glyphicon-search"></span>
-            </button>
-        </span>
-        </div>
-    </form>
-
-
-
-
-
         <!-- Authentication Links -->
         @guest
             @if (Route::has('register'))

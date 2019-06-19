@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Reservation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -28,12 +29,21 @@ class HomeController extends Controller
         return view('/home');
 
     }
+    // if it doesn't work, make another page with reservation.index
+    public function showReservations()
+    {
+        $userId = Auth::user()->id;
+        $reservations = Reservation::where('user_id',$userId)->get();
 
-    public function showChangePasswordForm(){
+        return view('reservations.index', compact('reservations'));
+    }
+    public function showChangePasswordForm()
+    {
         return view('changepassword');
     }
 
-    public function changePassword(Request $request){
+    public function changePassword(Request $request)
+    {
 
         if (!(Hash::check($request->get('current-password'), Auth::user()->password))) {
             // The passwords matches

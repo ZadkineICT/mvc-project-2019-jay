@@ -29,7 +29,7 @@ Route::group(['middleware' => ['role:owner|admin']], function () {
     Route::resource('/rooms', 'RoomsController');
 });
 
-Route::group(['middleware' => ['role:owner|admin|client']], function () {
+Route::group(['middleware' => ['role:owner|admin']], function () {
     Route::get('/reservations/{reservation}/delete', 'ReservationsController@delete')->name('reservations.delete');
     Route::resource('/reservations', 'ReservationsController');
 });
@@ -61,6 +61,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/hotels/{hotel}', 'HotelsController@show')->name('hotels.show');
 Route::get('/reservations/create', 'ReservationsController@create')->name('reservations.create');
+Route::post('/reservations', 'ReservationsController@store');
 Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 Route::get('/changePassword','HomeController@showChangePasswordForm');
 Route::post('/changePassword','HomeController@changePassword')->name('changePassword');

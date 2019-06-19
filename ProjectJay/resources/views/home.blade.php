@@ -1,7 +1,21 @@
 @extends('layouts.app')
 
 @section('content')
+
 <div class="container">
+
+    @if (session('message'))
+        <div class="alert alert-success" role="alert">
+            {{ session('message') }}
+        </div>
+    @endif
+
+    @if (session('status'))
+        <div class="alert alert-success" role="alert">
+            {{ session('status') }}
+        </div>
+    @endif
+
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -9,6 +23,9 @@
                 <div class="card-body">
                     <p>Hello {{ Auth::user()->name }}!</p>
                     <p><a href="{{ route('changePassword') }}">Change password</a></p>
+                </div>
+                <div class="card-body">
+                    <a href="{{ route('reservations.index') }}">Reservations</a>
                 </div>
             </div>
             <br>

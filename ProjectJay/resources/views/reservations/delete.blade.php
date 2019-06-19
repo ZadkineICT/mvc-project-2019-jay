@@ -31,23 +31,21 @@
             <input type="text" class="form-control" name="id" value="{{ $reservation->end }}">
         </div>
         <div class="form-group">
-            <label>Price</label>
-            <input type="text" class="form-control" name="id" value="{{ $reservation->price }}">
-        </div>
-        <div class="form-group">
-            <label>RNumber of persons</label>
+            <label>Number of persons</label>
             <input type="text" class="form-control" name="id" value="{{ $reservation->number_of_persons }}">
         </div>
         <div class="form-group">
             <label>User id</label>
             <input type="text" class="form-control" name="id" value="{{ $reservation->user_id }}">
         </div>
+        @can('edit reservations')
         <div class="form-group">
-            <label>Room id</label>
+            <label>Room</label>
             <input type="text" class="form-control" name="id" value="{{ $reservation->room_id }}">
         </div>
+        @endcan
         <div class="form-group">
-            <label>Hotel id</label>
+            <label>Hotel</label>
             <input type="text" name="hotel_id" class="form-control" value="{{ $reservation->hotel_id }}">
         </div>
         <button type="submit" class="btn btn-danger">DELETE</button>

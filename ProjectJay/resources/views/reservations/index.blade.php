@@ -1,7 +1,6 @@
 @extends('layout.layout')
 
 @section('content')
-
     <h1 class="mt-5">Reservations</h1>
 
     @if (session('message'))
@@ -37,7 +36,6 @@
             @endhasrole
             <th scope="col">Date start</th>
             <th scope="col">Date end</th>
-            <th scope="col">Price</th>
             <th scope="col">Number of <br>persons</th>
             <th scope="col">User</th>
             <th scope="col">Room</th>
@@ -61,7 +59,6 @@
                 @endhasrole
                 <td>{{ $reservation->start}}</td>
                 <td>{{ $reservation->end }}</td>
-                <td>{{ $reservation->price }}</td>
                 <td>{{ $reservation->number_of_persons }}</td>
                 <td>{{ $reservation->user->name}}</td>
                 <td>{{ $reservation->room_id }}</td>
@@ -79,5 +76,4 @@
         @endforeach
         </tbody>
     </table>
-
 @endsection

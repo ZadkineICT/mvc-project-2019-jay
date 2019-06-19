@@ -10,7 +10,6 @@ $factory->define(Reservation::class, function (Faker $faker) {
         //
         'start' => $faker->date(),
         'end' => $faker->date(),
-        'price' => $faker->randomFloat(2,1,99),
         'number_of_persons' => $faker->numberBetween(1,6),
         'user_id' => \App\User::all()->random()->id,
         'room_id' => \App\Room::all()->random()->id,

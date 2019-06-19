@@ -6,6 +6,8 @@ use App\Http\Requests\StoreReservationsRequest;
 use App\Http\Requests\UpdateReservationsRequest;
 use App\Reservation;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Spatie\Permission\Models\Role;
 
 class ReservationsController extends Controller
 {
@@ -49,19 +51,25 @@ class ReservationsController extends Controller
      */
     public function store(StoreReservationsRequest $request)
     {
-        //
         $reservation = new Reservation();
         $reservation->start = $request->start;
         $reservation->end = $request->end;
-        $reservation->price = $request->price;
         $reservation->number_of_persons = $request->number_of_persons;
-        $reservation->user_id = $request->user_id;
+        $reservation->user_id = $request->user()->id;
         $reservation->room_id = $request->room_id;
         $reservation->hotel_id = $request->hotel_id;
 
         $reservation->save();
 
-        return redirect()->route('reservations.index');
+        $user = Auth::user();
+        if($user->roles->pluck( 'name' )->contains( 'client' ))
+        {
+            return redirect()->route('home')->with('status', 'Added Reservation');
+        }
+        else
+        {
+            return redirect()->route('reservations.index')->with('status', 'Added Reservation');
+        }
     }
 
     /**
@@ -100,9 +108,8 @@ class ReservationsController extends Controller
         //
         $reservation->start = $request->start;
         $reservation->end = $request->end;
-        $reservation->price = $request->price;
         $reservation->number_of_persons = $request->number_of_persons;
-        $reservation->user_id = $request->user_id;
+        $reservation->user_id = $request->user()->id;
         $reservation->room_id = $request->room_id;
         $reservation->hotel_id = $request->hotel_id;
 

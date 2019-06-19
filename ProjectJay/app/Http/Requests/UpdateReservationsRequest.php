@@ -27,10 +27,8 @@ class UpdateReservationsRequest extends FormRequest
             //
             'start' => 'required',
             'end' => 'required',
-            'price' => 'required',
             'number_of_persons' => 'required',
-            'user_id' => 'required',
-            'room_id' => 'required',
+            'room_id' => '',
             'hotel_id' => 'required'
         ];
     }
