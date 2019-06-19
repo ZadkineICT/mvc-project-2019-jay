@@ -29,7 +29,7 @@ Route::group(['middleware' => ['role:owner|admin']], function () {
     Route::resource('/rooms', 'RoomsController');
 });
 
-Route::group(['middleware' => ['role:owner|admin']], function () {
+Route::group(['middleware' => ['role:owner|admin|client']], function () {
     Route::get('/reservations/{reservation}/delete', 'ReservationsController@delete')->name('reservations.delete');
     Route::resource('/reservations', 'ReservationsController');
 });
