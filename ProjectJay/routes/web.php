@@ -25,6 +25,7 @@ Route::any ( '/search', function () {
         return view ( 'search' )->withMessage ( 'No Details found. Try to search again !' );
 } );
 
+
 // Route::get('/hotel', function () {
 //     return view('hotel.index');
 // });
