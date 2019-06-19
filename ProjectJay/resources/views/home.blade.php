@@ -8,6 +8,7 @@
                 <div class="card-header">Dashboard</div>
                 <div class="card-body">
                     <p>Hello {{ Auth::user()->name }}!</p>
+                    <p><a href="{{ route('changePassword') }}">Change password</a></p>
                 </div>
             </div>
             <br>

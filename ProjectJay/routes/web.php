@@ -58,23 +58,12 @@ Route::get('/frontpage', function () {
 
 Auth::routes();
 
-Route::group(['prefix' => 'admin','namespace' => 'Auth'],function(){
-    // Authentication Routes...
-    Route::get('login', 'LoginController@showLoginForm')->name('login');
-    Route::post('login', 'LoginController@login');
-    Route::post('logout', 'LoginController@logout')->name('logout');
-
-    // Password Reset Routes...
-    Route::get('password/reset', 'ForgotPasswordController@showLinkRequestForm')->name('password.reset');
-    Route::post('password/email', 'ForgotPasswordController@sendResetLinkEmail')->name('password.email');
-    Route::get('password/reset/{token}', 'ResetPasswordController@showResetForm')->name('password.reset.token');
-    Route::post('password/reset', 'ResetPasswordController@reset');
-});
-
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/hotels/{hotel}', 'HotelsController@show')->name('hotels.show');
 Route::get('/reservations/create', 'ReservationsController@create')->name('reservations.create');
 Route::get('logout', 'Auth\LoginController@logout')->name('logout');
+Route::get('/changePassword','HomeController@showChangePasswordForm');
+Route::post('/changePassword','HomeController@changePassword')->name('changePassword');
 /*
 Route::group(['middleware' => ['guest']], function () {
     Route::get('/hotels/{hotel}', 'HotelsController@show')->name('hotels.show');
