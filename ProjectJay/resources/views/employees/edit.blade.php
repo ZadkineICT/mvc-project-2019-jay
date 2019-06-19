@@ -37,15 +37,15 @@
             @method('PUT ')
             <div class="form-group">
                 <label>Date of birth</label>
-                <input type="text" class="form-control" name="room_size" value="{{ $employee->date_of_birth }}">
+                <input type="text" class="form-control" name="date_of_birth" value="{{ $employee->date_of_birth }}">
             </div>
             <div class="form-group">
                 <label>Position</label>
-                <input type="text" class="form-control" name="room_size" value="{{ $employee->position }}">
+                <input type="text" class="form-control" name="position" value="{{ $employee->position }}">
             </div>
             <div class="form-group">
                 <label>User id</label>
-                <input type="text" name="hotel_id" class="form-control" value="{{ $employee->user_Id }}">
+                <input type="text" name="user_id" class="form-control" value="{{ $employee->user_id }}">
             </div>
             <div class="form-group">
                 <label>Hotel id</label>

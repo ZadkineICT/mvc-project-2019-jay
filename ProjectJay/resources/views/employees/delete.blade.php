@@ -14,7 +14,7 @@
         </div>
     @endif
 
-    @can('edit employee', 'delete employees')
+    @can('edit employees', 'delete employees')
         <form action="{{ route('employees.destroy', $employee) }}" method="POST">
             @csrf
             @method('DELETE')
