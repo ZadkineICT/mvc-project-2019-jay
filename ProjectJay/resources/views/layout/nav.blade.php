@@ -14,9 +14,9 @@
 @endrole
 <ul class="navmenu">
     <li><a class="nav-left" href="/frontpage">Home</a></li>
-    <li><a class="nav-left" href="{{ route('hotels.show', '') }}">Hotels</a></li>
     @role('owner|admin')
     <ul class="adminmenu">
+        <li><a class="nav-left" href="{{ route('hotels.show', '') }}">Hotels</a></li>
         <li><a class="nav-left" href="{{ route('rooms.show', '') }}">Rooms</a></li>
         <li><a class="nav-left" href="{{ route('reservations.show', '') }}">Reservations</a></li>
         <li><a class="nav-left" href="{{ route('employees.show', '') }}">Employees</a></li>
