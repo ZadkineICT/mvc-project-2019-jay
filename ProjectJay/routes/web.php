@@ -29,7 +29,7 @@ Route::group(['middleware' => ['role:owner|admin']], function () {
     Route::resource('/rooms', 'RoomsController');
 });
 
-Route::group(['middleware' => ['role:owner|admin']], function () {
+Route::group(['middleware' => ['role:owner|admin|']], function () {
     Route::get('/reservations/{reservation}/delete', 'ReservationsController@delete')->name('reservations.delete');
     Route::resource('/reservations', 'ReservationsController');
 });
@@ -47,6 +47,12 @@ Route::group(['middleware' => ['role:owner|admin']], function () {
 Route::group(['middleware' => ['role:owner|admin']], function () {
     Route::get('/reviews/{review}/delete', 'ReviewsController@delete')->name('reviews.delete');
     Route::resource('/reviews', 'ReviewsController');
+});
+
+Route::group(['middleware' => ['role:client']], function () {
+    Route::get('/reservationuserShow', 'HomeController@indexReservations')->name('reservationuserShow');
+    Route::get('/reservationuserShow/{reservation}/delete', 'HomeController@delete')->name('reservationuserDelete');
+    Route::post('/home/{reservation}', 'HomeController@destroy')->name('home.destroy');
 });
 
 use App\Hotel;

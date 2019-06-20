@@ -19,7 +19,7 @@
         <ul class="nav nav-tabs">
             <li class="nav-item">
                 <a class="nav-link " href="{{ route('reservations.index') }}">List</a>
-            </li>\
+            </li>
             <li class="nav-item">
                 <a class="nav-link active" href="{{ route('reservations.create') }}">Add </a>
             </li>
@@ -47,7 +47,11 @@
         @endcan
         <div class="form-group">
             <label>Hotel</label>
-            <input type="text" class="form-control" name="hotel_id" value="">
+            <select class="form-control" name="hotel_id">
+                @foreach ($hotels as $hotel)
+                    <option value="{{ $hotel->id }}">{{ $hotel->name_hotel }}</option>
+                @endforeach
+            </select>
         </div>
         {{-- <div class="form-group">
             <label>Category</label>

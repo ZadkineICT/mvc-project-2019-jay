@@ -8,6 +8,7 @@ use App\Reservation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Spatie\Permission\Models\Role;
+use Illuminate\Support\Facades\DB;
 
 class ReservationsController extends Controller
 {
@@ -40,7 +41,8 @@ class ReservationsController extends Controller
     public function create()
     {
         //
-        return view('reservations.create');
+        $hotels = DB::table('hotels')->select('id', 'name_hotel')->get();
+        return view('reservations.create', compact('hotels'));
     }
 
     /**
@@ -135,6 +137,14 @@ class ReservationsController extends Controller
     {
         //
         $reservation->delete();
-        return redirect()->route('reservations.index')->with('status', 'Reservation deleted');
+        $user = Auth::user();
+        if($user->roles->pluck( 'name' )->contains( 'client' ))
+        {
+            return redirect()->route('home')->with('status', 'Reservation Canceled');
+        }
+        else
+        {
+            return redirect()->route('reservations.index')->with('status', 'Reservation Deleted');
+        }
     }
 }

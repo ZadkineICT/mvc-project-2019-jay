@@ -1,6 +1,7 @@
 @extends('layout.layout')
 
 @section('content')
+    @can('edit reservations')
     <h1 class="mt-5">Reservations</h1>
 
     @if (session('message'))
@@ -76,4 +77,5 @@
         @endforeach
         </tbody>
     </table>
+    @endcan
 @endsection

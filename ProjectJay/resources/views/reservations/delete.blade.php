@@ -14,7 +14,7 @@
         </div>
     @endif
 
-    @can('edit reservations', 'delete reservations')
+    @can('delete reservations')
     <form action="{{ route('reservations.destroy', $reservation) }}" method="POST">
         @csrf
         @method('DELETE')
@@ -24,24 +24,24 @@
         </div>
         <div class="form-group">
             <label>Date start</label>
-            <input type="text" class="form-control" name="id" value="{{ $reservation->start }}">
+            <input type="text" class="form-control" name="start" value="{{ $reservation->start }}">
         </div>
         <div class="form-group">
             <label>Date end</label>
-            <input type="text" class="form-control" name="id" value="{{ $reservation->end }}">
+            <input type="text" class="form-control" name="end" value="{{ $reservation->end }}">
         </div>
         <div class="form-group">
             <label>Number of persons</label>
-            <input type="text" class="form-control" name="id" value="{{ $reservation->number_of_persons }}">
+            <input type="text" class="form-control" name="number_of_persons" value="{{ $reservation->number_of_persons }}">
         </div>
         <div class="form-group">
             <label>User id</label>
-            <input type="text" class="form-control" name="id" value="{{ $reservation->user_id }}">
+            <input type="text" class="form-control" name="user_id" value="{{ $reservation->user_id }}">
         </div>
         @can('edit reservations')
         <div class="form-group">
             <label>Room</label>
-            <input type="text" class="form-control" name="id" value="{{ $reservation->room_id }}">
+            <input type="text" class="form-control" name="room_id" value="{{ $reservation->room_id }}">
         </div>
         @endcan
         <div class="form-group">

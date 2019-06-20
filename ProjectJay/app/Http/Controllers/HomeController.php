@@ -30,13 +30,34 @@ class HomeController extends Controller
 
     }
     // if it doesn't work, make another page with reservation.index
-    public function showReservations()
+    public function indexReservations()
     {
         $userId = Auth::user()->id;
         $reservations = Reservation::where('user_id',$userId)->get();
 
-        return view('reservations.index', compact('reservations'));
+        return view('reservationuserShow', compact('reservations'));
     }
+
+    public function delete(Reservation $reservation)
+    {
+        return view('reservationuserDelete', compact('reservation'));
+    }
+
+    public function destroy(Reservation $reservation)
+    {
+        //
+        $reservation->delete();
+        $user = Auth::user();
+        if($user->roles->pluck( 'name' )->contains( 'client' ))
+        {
+            return redirect()->route('home')->with('status', 'Reservation Canceled');
+        }
+        else
+        {
+            return redirect()->route('reservations.index')->with('status', 'Reservation Deleted');
+        }
+    }
+
     public function showChangePasswordForm()
     {
         return view('changepassword');

@@ -49,10 +49,10 @@ class RolesAndPermissionsSeeder extends Seeder
         $role->givePermissionTo('create reservations', 'edit reservations');
         $role->givePermissionTo('create employees', 'edit employees');
         $role->givePermissionTo('create roomtypes', 'edit roomtypes');
+        $role->givePermissionTo('create reviews', 'edit reviews');
 
         $role = Role::create(['name' => 'client']);
         $role->givePermissionTo('create reviews');
-        $role->givePermissionTo('create reservations');
-        $role->givePermissionTo('delete reservations');
+        $role->givePermissionTo('create reservations', 'delete reservations');
     }
 }
