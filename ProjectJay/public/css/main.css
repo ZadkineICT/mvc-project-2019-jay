@@ -38,12 +38,6 @@ main {
   grid-row: 2;
 }
 
-aside {
-  margin-left: 5vw;
-  grid-column: 1/3;
-  grid-row: 2;
-  display:none;
-}
 /* 
 ===================
 
@@ -326,9 +320,57 @@ nav ul li a:hover, nav li a:hover {
 
 ===================
 */
-aside {
+
+.filters {
+  position: fixed;
+  top:0;
+  left:-14rem;
   padding-top: 3.2vw;
+  background-color:#fff;
+  width:14rem;
+  height:100vh;
+  z-index:9;
+  transition: 0.4s ease-in-out;
 }
+
+.filters .aside-button label {
+  display:block;
+  height:100%;
+  width:1em;
+}
+
+.filters .aside-button label i {
+  position: relative;
+  left: -0.315em;
+  top: -0.13em;
+  transform: rotate(0deg);
+  font-size: 9.9em;
+  color:transparent;
+}
+
+.aside-button {
+  position: relative;
+  top: 25vh;
+  left: 14em;
+  width: 0; 
+  height: 0; 
+  border-left: 3em solid transparent;
+  border-right: 3em solid transparent;
+  border-bottom: 3em solid rgb(150, 150, 150);
+  transform: rotate(90deg);
+  transition: .4s ease-in-out;
+}
+
+#aside-checkbox:checked ~ .filters {
+  transform: translateX(14rem);
+  transition: 0.4s ease-in-out;
+  background-color:rgb(189, 189, 189);
+}
+#aside-checkbox:checked ~ .filters .aside-button {
+  transform: translateX(-2.9em) rotate(-90deg);
+  transition: .4s ease-in-out;
+}
+
 
 aside ul, label, input[type=checkbox] {
   list-style: none;
@@ -341,7 +383,7 @@ aside label {
 }
 
 aside ul li {
-  font-size: 1vw;
+  font-size: 6vw;
   padding: 0.2vw 0.5vw;
   transition: 0.08s ease-in-out;
   border-bottom-style: solid;
@@ -382,6 +424,10 @@ aside ul li:hover > label {
 */
 
 @media only screen and (min-width: 768px) {
+  aside ul li {
+    font-size: 3vw;
+  }
+
   nav li a {
     padding-left: 3vw;
     padding-right: 3vw;
@@ -418,6 +464,9 @@ aside ul li:hover > label {
 }
 
 @media only screen and (min-width: 992px) {
+  aside ul li {
+    font-size: 1vw;
+  }
   .hotel-item-title {
     font-size: 1vw;
   }
