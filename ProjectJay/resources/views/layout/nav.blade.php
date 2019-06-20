@@ -10,7 +10,7 @@
     @endguest
 @hasanyrole('owner|admin|client')
     <li><a class="nav-right" href="/home">{{ Auth::user()->name }}</a></li>
-    <li><form action=""><input class="nav-mid" type="text" placeholder="Search"></form></li>
+    <li><input class="nav-mid" type="text" placeholder="Search"></li>
 @endrole
 <ul class="navmenu">
     <li><a class="nav-left" href="/frontpage">Home</a></li>

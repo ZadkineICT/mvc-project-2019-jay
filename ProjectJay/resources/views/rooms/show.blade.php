@@ -9,14 +9,9 @@
         <li class="nav-item">
             <a class="nav-link" href="{{ route('rooms.index') }}">List</a>
         </li>
-        @can('edit rooms')
-        <li class="nav-item">
-            <a class="nav-link" href="{{ route('rooms.create') }}">Add </a>
-        </li>
         <li class="nav-item">
             <a class="nav-link active" href="">Details </a>
         </li>
-       @endcan
     </ul>
 </nav>
 
