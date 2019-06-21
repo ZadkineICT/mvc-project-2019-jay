@@ -58,9 +58,4 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-
-    public function isClient()
-    {
-        return $this->roles()->where('name', 'client')->exists();
-    }
 }

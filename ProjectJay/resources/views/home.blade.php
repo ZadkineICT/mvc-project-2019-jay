@@ -23,7 +23,8 @@
                     <p>Hello {{ Auth::user()->name }}!</p>
                     <p><a href="{{ route('changePassword') }}">Change password</a></p>
                     @hasrole('client')
-                    <a href="{{ route('reservationuserShow') }}">Reservations</a>
+                    <a href="{{ route('reservationuserShow') }}">Reservations</a><br>
+                    <a href="{{ route('reviewuserShow') }}">Reviews</a>
                     @endhasrole
                 </div>
             </div>

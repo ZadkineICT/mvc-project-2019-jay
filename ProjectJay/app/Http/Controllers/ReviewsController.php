@@ -58,10 +58,12 @@ class ReviewsController extends Controller
 
         $review->save();
 
-        if (Auth::user()->isClient()) {
+        $user = Auth::user();
+        if ($user->roles->pluck('name')->contains('client')) {
+
             return redirect()->route('hotels.show', $_GET['id'])->with('status', 'Added Review');
         } else {
-            return redirect()->route('reviews.index')->with('status', 'Added Review');
+            // return redirect()->route('reviews.index')->with('status', 'Added Review');
         }
     }
 
