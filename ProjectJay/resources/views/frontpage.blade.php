@@ -6,10 +6,9 @@
     <div class="filters">   
         <h3>Filters</h3>
         <ul>
-            <li><input type="checkbox" id="pool"></input> <label for="pool">Swimming pool</li>
-            <li><input type="checkbox" id="center"></input> <label for="center">Center of city</li>
-            <li><input type="checkbox" id="shops"></input> <label for="shops">Shops</li>
-            <li><input type="checkbox" id="sauna"></input> <label for="sauna">Sauna</li>
+            <li><a href="/?country=Iraq">Turkey</a></li>
+            <li><a href="/?country=Netherlands">Netherlands</a></li>
+            <li><a href="/?country=Belgium">Belgium</a></li>
         </ul>
         <div class="aside-button"><label for="aside-checkbox"><i class="fas fa-sort-up"></i></label></div>
     </div>

@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Hotel;
 use App\Http\Requests\StoreHotelsRequest;
 use App\Http\Requests\UpdateHotelsRequest;
-use App\Room;
 use Illuminate\Http\Request;
 
 class HotelsController extends Controller
@@ -24,12 +23,9 @@ class HotelsController extends Controller
      */
     public function index()
     {
-        //
-        $this->middleware('auth');
         $hotels = Hotel::all();
-        $rooms = Room::all()->count();
-        return view('hotels.index', compact('hotels'), compact('rooms'));
 
+        return view('hotels.index', compact('hotels'));
     }
 
     /**

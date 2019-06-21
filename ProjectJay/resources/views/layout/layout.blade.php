@@ -17,9 +17,9 @@
 <nav>
     @yield('nav')
 </nav>
-<aside>
-    @yield('aside-filter')
-</aside>
+{{--<aside>--}}
+    {{--@yield('aside-filter')--}}
+{{--</aside>--}}
 <main role="main">
     @yield('popular')
     @yield('hotel-list')
