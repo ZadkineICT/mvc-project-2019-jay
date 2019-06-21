@@ -61,7 +61,7 @@
                     <td>{{ $hotel->city }}</td>
                     <td>{{ $hotel->country }}
                     @can('create rooms')
-                    <td><a href="{{ route('rooms.create', ['hotel'=>$hotel->id]) }}">Add Room</a></td>
+                    <td><a href="{{ route('rooms.create', ['id'=>$hotel->id]) }}">Add Room</a></td>
                     @endcan
                     <td><a href="{{ route('hotels.show', $hotel) }}">Details</a></td>
                     @can('edit hotels')

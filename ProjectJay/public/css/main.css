@@ -418,6 +418,15 @@ aside ul li:hover > label {
   display: none;
 }
 
+.review-item {
+  background-color:#eeeeee;
+  border-radius:5px;
+  border-width:1px;
+  border-style:solid;
+  border-color:#d4d4d4;
+  padding: 0.5em;
+}
+
 /*
 ===================
 
