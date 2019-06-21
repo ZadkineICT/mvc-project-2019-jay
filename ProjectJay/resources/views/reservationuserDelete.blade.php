@@ -46,7 +46,7 @@
             @endcan
             <div class="form-group">
                 <label>Hotel</label>
-                <input disabled type="text" name="hotel_id" class="form-control" value="{{ $reservation->hotel_id }}">
+                <input disabled  type="text" name="hotel_id" class="form-control" value="{{ $reservation->hotel_id }}">
             </div>
             <button type="submit" class="btn btn-danger">DELETE</button>
         </form>

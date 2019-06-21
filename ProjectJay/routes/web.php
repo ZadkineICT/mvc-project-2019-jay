@@ -11,13 +11,19 @@
 |
 */
 
+use App\Hotel;
+
+Auth::routes();
+
 Route::get('/', function () {
-    return view('welcome');
+    $hotels = Hotel::all();
+    return view('frontpage', compact('hotels'));
 });
 
-// Route::get('/hotel', function () {
-//     return view('hotel.index');
-// });
+Route::get('/frontpage', function () {
+    $hotels = Hotel::all();
+    return view('frontpage', compact('hotels'));
+});
 
 Route::group(['middleware' => ['role:owner|admin']], function () {
     Route::get('/hotels/{hotel}/delete', 'HotelsController@delete')->name('hotels.delete');
@@ -55,15 +61,6 @@ Route::group(['middleware' => ['role:client']], function () {
     Route::post('/home/{reservation}', 'HomeController@destroy')->name('home.destroy');
 });
 
-use App\Hotel;
-
-Route::get('/frontpage', function () {
-    $hotels = Hotel::all();
-    return view('frontpage', compact('hotels'));
-});
-
-Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/hotels/{hotel}', 'HotelsController@show')->name('hotels.show');
 Route::get('/reservations/create', 'ReservationsController@create')->name('reservations.create');
@@ -71,14 +68,4 @@ Route::post('/reservations', 'ReservationsController@store');
 Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 Route::get('/changePassword','HomeController@showChangePasswordForm');
 Route::post('/changePassword','HomeController@changePassword')->name('changePassword');
-/*
-Route::group(['middleware' => ['guest']], function () {
-    Route::get('/hotels/{hotel}', 'HotelsController@show')->name('hotels.show');
-    Route::resource('/hotels', 'HotelsController');
-});
 
-Route::group(['middleware' => ['guest']], function () {
-    Route::get('/reservations/create', 'ReservationsController@create')->name('reservations.create');
-    Route::resource('/reservations', 'ReservationsController');
-});
-/*

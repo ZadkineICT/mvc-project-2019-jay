@@ -28,10 +28,10 @@ class User extends Authenticatable
         return $this->hasMany('App\Review');
     }
 
-    public function assignRole(Role $role)
-    {
-        return $this->roles()->save($role);
-    }
+//    public function assignRole(Role $role)
+//    {
+//        return $this->roles()->save($role);
+//    }
     /**
      * The attributes that are mass assignable.
      *
