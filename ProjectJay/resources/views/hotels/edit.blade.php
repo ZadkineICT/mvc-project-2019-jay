@@ -20,11 +20,6 @@
         <li class="nav-item">
             <a class="nav-link " href="{{ route('hotels.index') }}">List</a>
         </li>
-        @can('create hotels')
-        <li class="nav-item">
-            <a class="nav-link" href="{{ route('hotels.create') }}">Add </a>
-        </li>
-        @endcan
         @can('edit hotels')
         <li class="nav-item">
             <a class="nav-link active" href="">Edit </a>
@@ -32,6 +27,7 @@
         @endcan
     </ul>
 </nav>
+
 @can('edit hotels')
 <form method="POST" action="{{ route('hotels.update', $hotel) }}">
     @csrf

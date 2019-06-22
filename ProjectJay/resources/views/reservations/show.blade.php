@@ -41,11 +41,6 @@
                 {{ $reservation->end }}
             </li>
             <li class="list-group-item">
-                Price
-                <br>
-                {{ $reservation->price }}
-            </li>
-            <li class="list-group-item">
                 Number of persons
                 <br>
                 {{ $reservation->number_of_persons }}

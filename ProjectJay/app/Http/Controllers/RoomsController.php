@@ -6,6 +6,7 @@ use App\Room;
 use App\Http\Requests\StoreRoomsRequest;
 use App\Http\Requests\UpdateRoomsRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class RoomsController extends Controller
@@ -87,7 +88,10 @@ class RoomsController extends Controller
     public function edit(Room $room)
     {
         //
-        return view('rooms.edit', compact('room'));
+        $hotels = DB::table('hotels')->select('id', 'name_hotel')->get();
+        $roomtypes = DB::table('roomtypes')->select('id', 'name')->get();
+
+        return view('rooms.edit', compact('room', 'hotels', 'roomtypes'));
     }
 
     /**

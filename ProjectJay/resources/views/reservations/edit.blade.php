@@ -46,10 +46,6 @@
             <input type="text" class="form-control" name="end" value="{{ $reservation->end}}">
         </div>
         <div class="form-group">
-            <label>Price</label>
-            <input type="text" class="form-control" name="price" value="{{ $reservation->price}}">
-        </div>
-        <div class="form-group">
             <label>Number of persons</label>
             <input type="text" class="form-control" name="number_of_persons" value="{{ $reservation->number_of_persons}}">
         </div>

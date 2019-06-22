@@ -1,6 +1,5 @@
 <?php
-use App\Hotel;
-use Illuminate\Support\Facades\Input;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,23 +11,19 @@ use Illuminate\Support\Facades\Input;
 |
 */
 
+use App\Hotel;
+
+Auth::routes();
+
 Route::get('/', function () {
-    return view('welcome');
+    $hotels = Hotel::all();
+    return view('frontpage', compact('hotels'));
 });
 
-Route::any ( '/search', function () {
-    $q = Input::get ( 'q' );
-    $hotel = Hotel::where ( 'name_hotel', 'LIKE', '%' . $q . '%' )->orWhere ( 'country', 'LIKE', '%' . $q . '%' )->get ();
-    if (count ( $hotel ) > 0)
-        return view ( 'search' )->withDetails ( $hotel )->withQuery ( $q );
-    else
-        return view ( 'search' )->withMessage ( 'No Details found. Try to search again !' );
-} );
-
-
-// Route::get('/hotel', function () {
-//     return view('hotel.index');
-// });
+Route::get('/frontpage', function () {
+    $hotels = Hotel::all();
+    return view('frontpage', compact('hotels'));
+});
 
 Route::group(['middleware' => ['role:owner|admin']], function () {
     Route::get('/hotels/{hotel}/delete', 'HotelsController@delete')->name('hotels.delete');
@@ -40,7 +35,7 @@ Route::group(['middleware' => ['role:owner|admin']], function () {
     Route::resource('/rooms', 'RoomsController');
 });
 
-Route::group(['middleware' => ['role:owner|admin|client']], function () {
+Route::group(['middleware' => ['role:owner|admin|']], function () {
     Route::get('/reservations/{reservation}/delete', 'ReservationsController@delete')->name('reservations.delete');
     Route::resource('/reservations', 'ReservationsController');
 });
@@ -60,39 +55,17 @@ Route::group(['middleware' => ['role:owner|admin']], function () {
     Route::resource('/reviews', 'ReviewsController');
 });
 
-
-Route::get('/frontpage', function () {
-    $hotels = Hotel::all();
-    return view('frontpage', compact('hotels'));
-});
-
-Auth::routes();
-
-Route::group(['prefix' => 'admin','namespace' => 'Auth'],function(){
-    // Authentication Routes...
-    Route::get('login', 'LoginController@showLoginForm')->name('login');
-    Route::post('login', 'LoginController@login');
-    Route::post('logout', 'LoginController@logout')->name('logout');
-
-    // Password Reset Routes...
-    Route::get('password/reset', 'ForgotPasswordController@showLinkRequestForm')->name('password.reset');
-    Route::post('password/email', 'ForgotPasswordController@sendResetLinkEmail')->name('password.email');
-    Route::get('password/reset/{token}', 'ResetPasswordController@showResetForm')->name('password.reset.token');
-    Route::post('password/reset', 'ResetPasswordController@reset');
+Route::group(['middleware' => ['role:client']], function () {
+    Route::get('/reservationuserShow', 'HomeController@indexReservations')->name('reservationuserShow');
+    Route::get('/reservationuserShow/{reservation}/delete', 'HomeController@delete')->name('reservationuserDelete');
+    Route::post('/home/{reservation}', 'HomeController@destroy')->name('home.destroy');
 });
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/hotels/{hotel}', 'HotelsController@show')->name('hotels.show');
 Route::get('/reservations/create', 'ReservationsController@create')->name('reservations.create');
+Route::post('/reservations', 'ReservationsController@store');
 Route::get('logout', 'Auth\LoginController@logout')->name('logout');
-/*
-Route::group(['middleware' => ['guest']], function () {
-    Route::get('/hotels/{hotel}', 'HotelsController@show')->name('hotels.show');
-    Route::resource('/hotels', 'HotelsController');
-});
+Route::get('/changePassword','HomeController@showChangePasswordForm');
+Route::post('/changePassword','HomeController@changePassword')->name('changePassword');
 
-Route::group(['middleware' => ['guest']], function () {
-    Route::get('/reservations/create', 'ReservationsController@create')->name('reservations.create');
-    Route::resource('/reservations', 'ReservationsController');
-});
-/*

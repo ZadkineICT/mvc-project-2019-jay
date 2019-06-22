@@ -37,9 +37,29 @@
     <div class="form-group">
         <label>Hotel</label>
         <select class="form-control" name="hotel_id">
-            @foreach ($hotels as $hotel)
-                <option value="{{ $hotel->id }}">{{ $hotel->id }} {{ $hotel->name_hotel }}</option>
-            @endforeach
+            @if (isset($_GET['hotel']));
+                @php
+                    print_r($_GET['hotel']);
+                @endphp
+                @foreach ($hotels as $hotel)
+                    @if ($hotel->id == $_GET['hotel'] )
+                        <option readonly value="{{ $hotel->id }} ">{{ $hotel->id }} {{ $hotel->name_hotel }}</option>
+                        @php 
+                            $current = $hotel->id;
+                        @endphp
+                        @break
+                    @endif
+                @endforeach
+            @else
+                @php
+                    $current = "";  
+                @endphp 
+                @foreach ($hotels as $hotel)
+                    @if ($hotel->id != $current) 
+                        <option value="{{ $hotel->id }}">{{ $hotel->id }} {{ $hotel->name_hotel }}</option>
+                    @endif
+                @endforeach
+            @endif
         </select>
     </div>
     <div class="form-group">
