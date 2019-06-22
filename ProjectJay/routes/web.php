@@ -12,6 +12,7 @@
 */
 
 use App\Hotel;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 
 Route::get ( '/search', function () {
@@ -19,10 +20,10 @@ Route::get ( '/search', function () {
 } );
 
 Route::any ( '/search', function () {
-    $q = Input::get ( 'q' );
-    $hotel = Hotel::where ( 'name_hotel', 'LIKE', '%' . $q . '%' )->orWhere ( 'country', 'LIKE', '%' . $q . '%' )->get ();
-    if (count ( $hotel ) > 0)
-        return view ( 'search' )->withDetails ( $hotel )->withQuery ( $q );
+    $q = Input::get('q');
+    $hotels = Hotel::where ( 'name_hotel', 'LIKE', '%' . $q . '%' )->orWhere ( 'country', 'LIKE', '%' . $q . '%' )->get ();
+    if (count ( $hotels ) > 0)
+        return view ( 'search' , compact('hotels'))->withQuery ( $q );
     else
         return view ( 'search' )->withMessage ( 'No Details found. Try to search again !' );
 } );
@@ -86,4 +87,5 @@ Route::post('/reservations', 'ReservationsController@store');
 Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 Route::get('/changePassword','HomeController@showChangePasswordForm');
 Route::post('/changePassword','HomeController@changePassword')->name('changePassword');
+
 
