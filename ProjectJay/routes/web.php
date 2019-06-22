@@ -12,6 +12,20 @@
 */
 
 use App\Hotel;
+use Illuminate\Support\Facades\Input;
+
+Route::get ( '/search', function () {
+    return view ( 'search' );
+} );
+
+Route::any ( '/search', function () {
+    $q = Input::get ( 'q' );
+    $hotel = Hotel::where ( 'name_hotel', 'LIKE', '%' . $q . '%' )->orWhere ( 'country', 'LIKE', '%' . $q . '%' )->get ();
+    if (count ( $hotel ) > 0)
+        return view ( 'search' )->withDetails ( $hotel )->withQuery ( $q );
+    else
+        return view ( 'search' )->withMessage ( 'No Details found. Try to search again !' );
+} );
 
 Auth::routes();
 
@@ -24,6 +38,10 @@ Route::get('/frontpage', function () {
     $hotels = Hotel::all();
     return view('frontpage', compact('hotels'));
 });
+
+Route::get ( '/', function () {
+    return view ( 'welcome' );
+} );
 
 Route::group(['middleware' => ['role:owner|admin']], function () {
     Route::get('/hotels/{hotel}/delete', 'HotelsController@delete')->name('hotels.delete');

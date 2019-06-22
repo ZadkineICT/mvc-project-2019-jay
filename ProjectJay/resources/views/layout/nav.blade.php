@@ -10,7 +10,10 @@
     @endguest
 @hasanyrole('owner|admin|client')
     <li><a class="nav-right" href="/home">{{ Auth::user()->name }}</a></li>
-    <li><input class="nav-mid" type="text" placeholder="Search"></li>
+    <form action="/search" method="GET" role="search">
+    {{ csrf_field() }}
+    <li><input type="text" class="nav-mid" name="name_hotel" name="country" placeholder="Search hotels"></li>
+    </form>
 @endrole
 <ul class="navmenu">
     <li><a class="nav-left" href="/frontpage">Home</a></li>
