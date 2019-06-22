@@ -25,7 +25,7 @@ Route::any ( '/search', function () {
     if (count ( $hotels ) > 0)
         return view ( 'search' , compact('hotels'))->withQuery ( $q );
     else
-        return view ( 'search' )->withMessage ( 'No Details found. Try to search again !' );
+        return view ( 'search' , compact('hotels'))->withQuery ( $q )->with('message', 'Cannot find hotels');
 } );
 
 Auth::routes();
