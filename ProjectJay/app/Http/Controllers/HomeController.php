@@ -86,7 +86,7 @@ class HomeController extends Controller
         $user->password = bcrypt($request->get('new-password'));
         $user->save();
 
-        return redirect()->back()->with("success","Password changed successfully !");
+        return redirect()->route('home')->with("message","Password changed successfully !");
 
     }
 }

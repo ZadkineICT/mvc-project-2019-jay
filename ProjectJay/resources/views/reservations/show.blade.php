@@ -6,6 +6,7 @@
 
     <nav class="nav">
         <ul class="nav nav-tabs">
+            @hasrole('owner|admin')
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('reservations.index') }}">List</a>
             </li>
@@ -17,6 +18,7 @@
                 <a class="nav-link active" href="">Details </a>
             </li>
             @endcan
+            @endhasrole
         </ul>
     </nav>
 

@@ -20,11 +20,9 @@
             <a class="nav-link active" href="">Details </a>
         </li>
         @endcan
-        @hasrole('client')
         <li class="nav-item">
-            <a class="nav-link" href="{{ route('reservations.create') }}">Reserveer</a>
+            <a class="nav-link" href="{{ route('reservations.create', ['hotel'=>$hotel->id]) }}">Reservation</a>
         </li>
-        @endhasrole
     </ul>
 </nav>
 
