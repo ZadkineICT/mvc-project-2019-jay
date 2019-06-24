@@ -9,14 +9,9 @@
         <li class="nav-item">
             <a class="nav-link" href="{{ route('rooms.index') }}">List</a>
         </li>
-        {{-- @hasrole('admin') --}}
-        <li class="nav-item">
-            <a class="nav-link" href="{{ route('rooms.create') }}">Add </a>
-        </li>
         <li class="nav-item">
             <a class="nav-link active" href="">Details </a>
         </li>
-        {{-- @endhasrole --}}
     </ul>
 </nav>
 
@@ -39,6 +34,11 @@
             Hotel ID
             <br>
             {{ $room->hotel_id }}
+        </li>
+        <li class="list-group-item">
+            Roomtype
+            <br>
+            {{ $room->roomtype_id }}
         </li>
     </ul>
 </div>

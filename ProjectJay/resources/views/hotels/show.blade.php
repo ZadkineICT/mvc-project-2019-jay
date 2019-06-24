@@ -15,14 +15,14 @@
         <li class="nav-item">
             <a class="nav-link" href="{{ route('hotels.index') }}">List</a>
         </li>
-        {{-- @hasrole('admin') --}}
-        <li class="nav-item">
-            <a class="nav-link" href="{{ route('hotels.create') }}">Add </a>
-        </li>
+        @can('edit hotels')
         <li class="nav-item">
             <a class="nav-link active" href="">Details </a>
         </li>
-        {{-- @endhasrole --}}
+        @endcan
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('reservations.create', ['hotel'=>$hotel->id]) }}">Reservation</a>
+        </li>
     </ul>
 </nav>
 
@@ -31,11 +31,13 @@
         Hotel Details
     </div>
     <ul class="list-group list-group-flush" style="list-style-type: none">
+        @hasrole('owner|admin')
         <li class="list-group-item">
             Id
             <br>
             {{ $hotel->id }}
         </li>
+        @endhasrole
         <li class="list-group-item">
             Hotel Name
             <br>

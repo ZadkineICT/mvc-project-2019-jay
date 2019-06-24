@@ -11,4 +11,15 @@ class Room extends Model
     {
         return $this->belongsTo('App\Hotel');
     }
+
+    public function roomtype()
+    {
+        return $this->belongsTo('App\Roomtype');
+    }
+
+    // hasMany() omdat het een many-to-many relation heeft met Reservations
+    public function reservation()
+    {
+        return $this->hasMany('App\Reservation');
+    }
 }

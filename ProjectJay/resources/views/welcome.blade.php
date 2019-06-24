@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>Hotel JAY</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -81,13 +81,16 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    Hotel JAY
                 </div>
 
                 <div class="links">
+                    <a href="/frontpage">Front Page</a>
                     <a href="{{ route('hotels.index') }}">Hotels</a>
                     <a href="{{ route('rooms.index') }}">Rooms</a>
-                    <a href="/frontpage">Front Page</a>
+                    <a href="{{ route('reservations.index') }}">Reservations</a>
+                    <a href="{{ route('employees.index') }}">Employees</a>
+                    <a href="{{ route('roomtypes.index') }}">Roomtypes</a>
                 </div>
             </div>
         </div>

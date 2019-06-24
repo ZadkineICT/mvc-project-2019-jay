@@ -1,43 +1,44 @@
-{{-- THIS IS A TEST FILE --}}
-
 @section('nav')
-<ul>
+<input class="nav-right menu-btn" type="checkbox" id="menu-btn"/>
+<label class="nav-right menu-icon" for="menu-btn"><span class="navicon"></span></label>
+@guest
+        @if (Route::has('register'))
+            <li><a class="nav-right" href="{{ route('register') }}">{{ __('Register') }}</a></li>
+        @endif
+        <li><a class="nav-right" href="{{ route('login') }}">{{ __('Login') }}</a></li>
+    @else
+    @endguest
+@hasanyrole('owner|admin|client')
+    <li><a class="nav-right" href="/home">{{ Auth::user()->name }}</a></li>
+@endrole
+<form action="/search" method="GET" role="search">
+    @csrf
+    <li><input type="text" class="nav-mid" name="q" placeholder="Search hotels"></li>
+</form>
+<ul class="navmenu">
     <li><a class="nav-left" href="/frontpage">Home</a></li>
-    <li><a class="nav-left" href="{{ route('hotels.show', '') }}">Hotels</a></li>
-    <li><a class="nav-left" href="{{ route('rooms.show', '') }}">Rooms</a></li>
-    <li><a class="nav-left" href="/home">User-home</a></li>
+    @role('owner|admin')
+    <ul class="adminmenu">
+        <li><a class="nav-left" href="{{ route('hotels.show', '') }}">Hotels</a></li>
+        <li><a class="nav-left" href="{{ route('rooms.show', '') }}">Rooms</a></li>
+        <li><a class="nav-left" href="{{ route('reservations.show', '') }}">Reservations</a></li>
+        <li><a class="nav-left" href="{{ route('employees.show', '') }}">Employees</a></li>
+        <li><a class="nav-left" href="{{ route('roomtypes.show', '') }}">Roomtypes</a></li>
+        <li><a class="nav-left" href="{{ route('reviews.show', '') }}">Reviews</a></li>
+    </ul>
+    @endrole
+    @guest
+        @if (Route::has('register'))
+        @endif
+    @else
+        <li>
+            <a class="" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+            <i class="fas fa-sort-up"></i> {{ __('Logout') }}
+            </a>
 
-    <li><form action=""><input class="nav-mid" type="text" placeholder="Search"></form></li>
-
-    <ul class="navbar-nav ml-auto">
-        <!-- Authentication Links -->
-        @guest
-            <li class="nav-item">
-                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-            </li>
-            @if (Route::has('register'))
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                </li>
-            @endif
-        @else
-            <li class="nav-item dropdown">
-                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                    {{ Auth::user()->name }} <span class="caret"></span>
-                </a>
-
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="{{ route('logout') }}"
-                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                        {{ __('Logout') }}
-                    </a>
-
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                        @csrf
-                    </form>
-                </div>
-            </li>
-        @endguest
-</ul>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                @csrf
+            </form>
+        </li>
+    @endguest
 @endsection 

@@ -6,9 +6,19 @@ use App\Room;
 use App\Http\Requests\StoreRoomsRequest;
 use App\Http\Requests\UpdateRoomsRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class RoomsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('permission:create rooms', ['only' => ['create', 'store']]);
+        $this->middleware('permission:edit rooms', ['only' => ['edit', 'update']]);
+        $this->middleware('permission:delete rooms', ['only' => ['delete', 'destroy']]);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -18,6 +28,8 @@ class RoomsController extends Controller
     {
         //
         $rooms = Room::all();
+        $rooms = Room::with('hotel')->get();
+        $rooms = Room::with('roomtype')->get();
 
         return view('rooms.index', compact('rooms'));
     }
@@ -30,7 +42,10 @@ class RoomsController extends Controller
     public function create()
     {
         //
-        return view('rooms.create');
+        $hotels = DB::table('hotels')->select('id', 'name_hotel')->get();
+        $roomtypes = DB::table('roomtypes')->select('id', 'name')->get();
+
+        return view('rooms.create', compact('hotels', 'roomtypes'));
     }
 
     /**
@@ -45,10 +60,11 @@ class RoomsController extends Controller
         $room = new Room();
         $room->room_size = $request->room_size;
         $room->hotel_id = $request->hotel_id;
+        $room->roomtype_id = $request->roomtype_id;
 
         $room->save();
 
-        return redirect()->route('rooms.index');
+        return redirect()->route('rooms.index')->with('status', 'Added Room');
     }
 
     /**
@@ -72,7 +88,10 @@ class RoomsController extends Controller
     public function edit(Room $room)
     {
         //
-        return view('rooms.edit', compact('room'));
+        $hotels = DB::table('hotels')->select('id', 'name_hotel')->get();
+        $roomtypes = DB::table('roomtypes')->select('id', 'name')->get();
+
+        return view('rooms.edit', compact('room', 'hotels', 'roomtypes'));
     }
 
     /**
@@ -87,6 +106,7 @@ class RoomsController extends Controller
         //
         $room->room_size = $request->room_size;
         $room->hotel_id = $request->hotel_id;
+        $room->roomtype_id = $request->roomtype_id;
 
         $room->save();
 

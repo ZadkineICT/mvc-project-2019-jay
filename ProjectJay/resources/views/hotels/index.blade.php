@@ -5,7 +5,7 @@
 <h1 class="mt-5">Hotels</h1>
 
 @if (session('message'))
-    <div class="alert alert-succes" role="alert">
+    <div class="alert alert-success" role="alert">
         {{ session('message') }}
     </div>
 @endif
@@ -21,55 +21,58 @@
         <li class="nav-item">
             <a class="nav-link active" href="{{ route('hotels.index') }}">List</a>
         </li>
-        {{-- @hasrole('admin') --}}
+        @can('edit hotels')
         <li class="nav-item">
             <a class="nav-link" href="{{ route('hotels.create') }}">Add </a>
         </li>
-        {{-- @endhasrole --}}
+        @endcan
     </ul>
 </nav>
 
-<table class="table table-striped">
-    <thead class="thead-dark">
-        <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Hotel Name</th>
-            <th scope="col">Zip code</th>
-            <th scope="col">Address</th>
-            <th scope="col">City</th>
-            <th scope="col">Country</th>
-            {{-- @hasrole('admin') --}}
-            <th scope="col ">Rooms</th>
-            <th scope="col lighter">Details</th>
-            <th scope="col lighter">Edit</th>
-            <th scope="col lighter">Delete</th>
-            {{-- @endhasrole --}}
-        </tr>
-    </thead>
-    <tbody>
-        <div class="admin-list">
-            <ul class="row">
-                @foreach($hotels as $hotel)
-                <td class="ustify-content-around hotel-item-admin">
-                    <tr>
-                        <td>{{ $hotel->id }}</td>
-                        <td>{{ $hotel->name_hotel }}</td>
-                        <td>{{ $hotel->zip_code }}</td>
-                        <td>{{ $hotel->address }}</td>
-                        <td>{{ $hotel->city }}</td>
-                        <td>{{ $hotel->country }}</td>
-                        <td>{{ $rooms }}</td>
-                        <td><a href="{{ route('hotels.show', $hotel) }}">Details</a></td>
-                        {{-- @hasrole('admin') --}}
-                        <td><a href="{{ route('hotels.edit', $hotel) }}">Edit</a></td>
-                        <td><a href="{{ route('hotels.delete', $hotel) }}">Delete</a></td>
-                        {{-- @endhasrole --}}
-                    </tr>
-                </td>
-                @endforeach
-            </ul>
-        </div>  
-    </tbody>
-</table>
-
+<div class="table-responsive-lg">
+    <table class="table table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th>ID</th>
+                <th>Hotel Name</th>
+                <th >Zip code</th>
+                <th>Address</th>
+                <th>City</th>
+                <th>Country</th>
+                @can('create rooms')
+                <th>Rooms</th>
+                @endcan
+                <th>Details</th>
+                @can('edit hotels')
+                <th>Edit</th>
+                @endcan
+                @can('delete hotels')
+                <th>Delete</th>
+                @endcan
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($hotels as $hotel)
+                <tr>
+                    <td>{{ $hotel->id }}</td>
+                    <td>{{ $hotel->name_hotel }}</td>
+                    <td>{{ $hotel->zip_code }}</td>
+                    <td>{{ $hotel->address }}</td>
+                    <td>{{ $hotel->city }}</td>
+                    <td>{{ $hotel->country }}
+                    @can('create rooms')
+                    <td><a href="{{ route('rooms.create', ['hotel'=>$hotel->id]) }}">Add Room</a></td>
+                    @endcan
+                    <td><a href="{{ route('hotels.show', $hotel) }}">Details</a></td>
+                    @can('edit hotels')
+                    <td><a href="{{ route('hotels.edit', $hotel) }}">Edit</a></td>
+                    @endcan
+                    @can('delete hotels')
+                    <td><a href="{{ route('hotels.delete', $hotel) }}">Delete</a></td>
+                    @endcan
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
+<div>
 @endsection

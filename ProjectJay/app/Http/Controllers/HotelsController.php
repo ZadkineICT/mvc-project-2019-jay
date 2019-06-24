@@ -5,18 +5,17 @@ namespace App\Http\Controllers;
 use App\Hotel;
 use App\Http\Requests\StoreHotelsRequest;
 use App\Http\Requests\UpdateHotelsRequest;
-use App\Room;
 use Illuminate\Http\Request;
 
 class HotelsController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
-        $this->middleware('permission:create hotels',['only' => ['create', 'store']]);
-        $this->middleware('permission:edit hotels',['only' => ['edit', 'update']]);
-        $this->middleware('permission:delete hotels',['only' => ['delete', 'destroy']]);
+        $this->middleware('permission:create hotels', ['only' => ['create', 'store']]);
+        $this->middleware('permission:edit hotels', ['only' => ['edit', 'update']]);
+        $this->middleware('permission:delete hotels', ['only' => ['delete', 'destroy']]);
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -24,10 +23,9 @@ class HotelsController extends Controller
      */
     public function index()
     {
-        //
         $hotels = Hotel::all();
-        $rooms = Room::all()->count();
-        return view('hotels.index', compact('hotels'), compact('rooms'));
+
+        return view('hotels.index', compact('hotels'));
     }
 
     /**
