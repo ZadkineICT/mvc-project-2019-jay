@@ -40,10 +40,6 @@ Route::get('/frontpage', function () {
     return view('frontpage', compact('hotels'));
 });
 
-Route::get ( '/', function () {
-    return view ( 'welcome' );
-} );
-
 Route::group(['middleware' => ['role:owner|admin']], function () {
     Route::get('/hotels/{hotel}/delete', 'HotelsController@delete')->name('hotels.delete');
     Route::resource('/hotels', 'HotelsController');
