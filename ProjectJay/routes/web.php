@@ -88,7 +88,7 @@ Route::group(['middleware' => ['role:client']], function () {
 
 Route::group(['middleware' => ['role:client']], function () {
     Route::get('/favoriteuserShow', 'HomeController@indexFavorites')->name('favoriteUserShow');
-    Route::delete('/hotels/{hotel}', 'FavoritesController@destroy')->name('favoriteUserDestroy');
+    Route::delete('/hotels/{hotel}/delete', 'FavoritesController@destroy')->name('favoriteUserDestroy');
     Route::post('/hotels/{hotel}', 'FavoritesController@store')->name('favoriteUserStore');
 });
 
