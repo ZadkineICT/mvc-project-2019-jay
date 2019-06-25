@@ -5,9 +5,10 @@
         @if (Route::has('register'))
             <li><a class="nav-right" href="{{ route('register') }}">{{ __('Register') }}</a></li>
         @endif
-        <li><a class="nav-right" href="{{ route('login') }}">{{ __('Login') }}</a></li>
+        <li ><a  href="{{ route('login') }}">{{ __('Login') }}</a></li>
     @else
     @endguest
+<li><a href="/frontpage">Home</a></li>
 @hasanyrole('owner|admin|client')
     <li><a class="nav-right" href="/home">{{ Auth::user()->name }}</a></li>
 @endrole
