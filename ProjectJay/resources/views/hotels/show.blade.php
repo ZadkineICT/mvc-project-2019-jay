@@ -16,6 +16,16 @@
     </div>
 @endif
 
+@if ($errors->any()) 
+    <div class="alert alert-danger" role="alert">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
 <style>
     body {
         color:black;
@@ -76,12 +86,28 @@
             {{ $hotel->phone_number}}
         </li>
     </ul>
-</div><br><br>
+</div>
+@can('delete favorites')
+    @if($favorites)
+        <form action="{{ route('favoriteUserDestroy', $hotel->id) }}" method="POST">
+            @csrf
+            @method('DELETE')
+            <input type="submit" class="btn btn-success" value="Unfavorite">
+        </form>
+    @else
+        <form action="{{ route('favoriteUserStore', $hotel->id) }}" method="POST">
+            @csrf
+            <input type="submit" class="btn btn-success" value="Favorite">
+        </form>
+    @endif
+    <br>
+@endcan
+
+<br>
 <div class="reviews">
 @can('create reviews')
 <form action="{{ route('reviews.index', ['id'=>$hotel->id]) }}" method="POST">
     @csrf
-
     <div class="form-group">
         <label>Message</label>
         <textarea class="form-control" name="message"></textarea>
@@ -99,18 +125,11 @@
     <div class="form-group">
         <input type="hidden" class="form-control" name="hotel_id" value="{{ $hotel->id }}">
     </div>
-    {{-- <div class="form-group">
-        <label>Category</label>
-        <select class="form-control" name="category_id">
-            @foreach ($categories as $category)
-                <option value="{{ $category->id }}">{{ $category->name }}</option>
-            @endforeach
-        </select>
-    </div> --}}
     <button type="submit" class="btn btn-primary">Comment</button>
 </form>
 <br>
 @endcan
+<br><br>
 <h4>Reviews</h3>
 @foreach ($reviews as $review)
     @if ($review->hotel_id == $hotel->id)

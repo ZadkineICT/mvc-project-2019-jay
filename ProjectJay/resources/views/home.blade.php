@@ -23,8 +23,9 @@
                     <p>Hello {{ Auth::user()->name }}!</p>
                     <p><a href="{{ route('changePassword') }}">Change password</a></p>
                     @hasrole('client')
-                    <a href="{{ route('reservationuserShow') }}">Reservations</a><br>
-                    <a href="{{ route('reviewuserShow') }}">Reviews</a>
+                    <a href="{{ route('reservationUserShow') }}">Reservations</a><br>
+                    <a href="{{ route('reviewUserShow') }}">Reviews</a><br>
+                    <a href="{{ route('favoriteUserShow') }}">Favorites</a>
                     @endhasrole
                 </div>
             </div>
@@ -32,7 +33,6 @@
             @can('create hotels', 'create rooms')
             <div class="card">
                 <div class="card-header">Tables</div>
-
                 <div class="card-body">
                     <div class="links">
                         <ul>

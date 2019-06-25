@@ -25,6 +25,7 @@
         <li><a class="nav-left" href="{{ route('employees.show', '') }}">Employees</a></li>
         <li><a class="nav-left" href="{{ route('roomtypes.show', '') }}">Roomtypes</a></li>
         <li><a class="nav-left" href="{{ route('reviews.show', '') }}">Reviews</a></li>
+        <li><a class="nav-left" href="{{ route('favorites.show', '') }}">Favorites</a></li>
     </ul>
     @endrole
     @guest

@@ -26,7 +26,6 @@ class ReviewsController extends Controller
     {
         //
         $reviews = Review::all();
-
         return view('reviews.index', compact('reviews'));
     }
 
@@ -38,7 +37,7 @@ class ReviewsController extends Controller
     public function create()
     {
         //
-        return view('frontpage');
+        return view('frontpage', compact('hotels'));
     }
 
     /**
@@ -54,16 +53,16 @@ class ReviewsController extends Controller
         $review->date = now()->format('Y-m-d');
         $review->message = $request->message;
         $review->stars = $request->stars;
+        $review->user_id = $request->user()->id;
         $review->hotel_id = $request->hotel_id;
 
         $review->save();
 
         $user = Auth::user();
         if ($user->roles->pluck('name')->contains('client')) {
-
             return redirect()->route('hotels.show', $_GET['id'])->with('status', 'Added Review');
         } else {
-            // return redirect()->route('reviews.index')->with('status', 'Added Review');
+            return redirect()->route('reviews.index')->with('status', 'Added Review');
         }
     }
 
@@ -120,14 +119,17 @@ class ReviewsController extends Controller
 
     public function delete(Review $review)
     {
-        //
         return view('reviews.delete', compact('review'));
     }
 
     public function destroy(Review $review)
     {
-        //
         $review->delete();
-        return redirect()->route('reviews.index')->with('status', 'Review deleted');
+        $user = Auth::user();
+        if ($user->roles->pluck('name')->contains('client')) {
+            return redirect()->route('home')->with('status', 'Review Removed');
+        } else {
+            return redirect()->route('reviews.index')->with('status', 'Review Deleted');
+        }
     }
 }

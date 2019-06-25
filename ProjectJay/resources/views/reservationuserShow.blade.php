@@ -1,6 +1,10 @@
 @extends('layout.layout')
 
 @section('content')
+
+@php
+    $user = Auth::user();
+@endphp
     <h1 class="mt-5">Reservations</h1>
 
     @if (session('message'))
@@ -18,7 +22,7 @@
     <nav class="nav">
         <ul class="nav nav-tabs">
             <li class="nav-item">
-                <a class="nav-link active" href="{{ route('reservationuserShow') }}">List</a>
+                <a class="nav-link active" href="{{ route('reservationUserShow') }}">List</a>
             </li>
         </ul>
     </nav>
@@ -43,7 +47,7 @@
                 <td>{{ $reservation->number_of_persons }}</td>
                 <td>{{ $reservation->hotel->name_hotel }}</td>
                 @can('delete reservations')
-                    <td><a href="{{ route('reservationuserDelete', $reservation) }}">Cancel</a></td>
+                    <td><a href="{{ route('reservationUserDelete', $reservation) }}">Cancel</a></td>
                 @endcan
             </tr>
         @endforeach

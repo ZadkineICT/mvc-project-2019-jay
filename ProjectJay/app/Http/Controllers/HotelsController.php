@@ -5,7 +5,11 @@ namespace App\Http\Controllers;
 use App\Hotel;
 use App\Http\Requests\StoreHotelsRequest;
 use App\Http\Requests\UpdateHotelsRequest;
+use App\Room;
+use App\Review;
 use Illuminate\Http\Request;
+use App\Favorite;
+use Illuminate\Support\Facades\Auth;
 
 class HotelsController extends Controller
 {
@@ -24,8 +28,8 @@ class HotelsController extends Controller
     public function index()
     {
         $hotels = Hotel::all();
-
-        return view('hotels.index', compact('hotels'));
+        $rooms = Room::all()->count();
+        return view('hotels.index', compact('hotels'), compact('rooms'));
     }
 
     /**
@@ -71,7 +75,8 @@ class HotelsController extends Controller
     {
         //
         $reviews = Review::all();
-        return view('hotels.show', compact('hotel'), compact('reviews'));
+        $favorites = Favorite::where('user_id', Auth::user()->id)->where('hotel_id', $hotel->id)->first();
+        return view('hotels.show', compact('hotel', 'favorites'), compact('reviews'));
     }
 
     /**

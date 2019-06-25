@@ -23,6 +23,11 @@ class User extends Authenticatable
         return $this->hasOne('App\Employee');
     }
 
+    public function favorite()
+    {
+        return $this->hasMany('App\Favorite');
+    }
+
     public function review()
     {
         return $this->hasMany('App\Review');

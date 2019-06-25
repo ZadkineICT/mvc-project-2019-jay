@@ -70,18 +70,27 @@ Route::group(['middleware' => ['role:owner|admin']], function () {
     Route::resource('/reviews', 'ReviewsController');
 });
 
-Route::group(['middleware' => ['role:client']], function () {
-    Route::get('/reservationuserShow', 'HomeController@indexReservations')->name('reservationuserShow');
-    Route::get('/reservationuserShow/{reservation}/delete', 'HomeController@delete')->name('reservationuserDelete');
-    Route::post('/home/{reservation}', 'HomeController@destroy')->name('home.destroy');
+Route::group(['middleware' => ['role:owner|admin']], function () {
+    Route::resource('/favorites', 'FavoritesController');
 });
 
 Route::group(['middleware' => ['role:client']], function () {
-    Route::get('/reviewuserShow', 'HomeController@indexReviews')->name('reviewuserShow');
-    Route::get('/reviewuserShow/{review}/delete', 'HomeController@delete')->name('reviewuserDelete');
-    Route::post('/home/{review}', 'HomeController@destroy')->name('home.destroy');
+    Route::get('/reservationuserShow', 'HomeController@indexReservations')->name('reservationUserShow');
+    Route::delete('/reservationuserShow/{reservation}/delete', 'HomeController@destroyReservations')->name('reservationUserDestroy');
+    Route::get('/reservationuserShow/{reservation}', 'HomeController@deleteReservations')->name('reservationUserDelete');
 });
 
+Route::group(['middleware' => ['role:client']], function () {
+    Route::get('/reviewuserShow', 'HomeController@indexReviews')->name('reviewUserShow');
+    Route::delete('/reviewuserShow/{review}/delete', 'HomeController@destroyReviews')->name('reviewUserDestroy');
+    Route::get('/reviewuserShow/{review}', 'HomeController@deleteReviews')->name('reviewUserDelete');
+});
+
+Route::group(['middleware' => ['role:client']], function () {
+    Route::get('/favoriteuserShow', 'HomeController@indexFavorites')->name('favoriteUserShow');
+    Route::delete('/hotels/{hotel}', 'FavoritesController@destroy')->name('favoriteUserDestroy');
+    Route::post('/hotels/{hotel}', 'FavoritesController@store')->name('favoriteUserStore');
+});
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/hotels/{hotel}', 'HotelsController@show')->name('hotels.show');

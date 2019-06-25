@@ -18,7 +18,7 @@
     <nav class="nav">
         <ul class="nav nav-tabs">
             <li class="nav-item">
-                <a class="nav-link active" href="{{ route('reviewuserShow') }}">List</a>
+                <a class="nav-link active" href="{{ route('reviewUserShow') }}">List</a>
             </li>
         </ul>
     </nav>
@@ -30,9 +30,7 @@
             <th scope="col">Message</th>
             <th scope="col">Stars</th>
             <th scope="col">Hotel_id</th>
-            @can('delete reviews')
-                <th scope="col lighter">Remove</th>
-            @endcan
+            <th scope="col lighter">Remove</th>
         </tr>
         </thead>
         <tbody>
@@ -41,10 +39,8 @@
                 <td>{{ $review->date}}</td>
                 <td>{{ $review->message }}</td>
                 <td>{{ $review->stars }}</td>
-                <td>{{ $review->hotel->name_hotel }}</td>
-                @can('delete review')
-                    <td><a href="{{ route('reviewuserDelete', $review) }}">Remove</a></td>
-                @endcan
+                <td>{{ $review->hotel_id }}</td>
+                <td><a href="{{ route('reviewUserDelete', $review) }}">Remove</a></td>
             </tr>
         @endforeach
         </tbody>
