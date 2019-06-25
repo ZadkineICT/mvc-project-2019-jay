@@ -75,7 +75,12 @@ class HotelsController extends Controller
     {
         //
         $reviews = Review::all();
-        $favorites = Favorite::where('user_id', Auth::user()->id)->where('hotel_id', $hotel->id)->first();
+        if (Auth::user()) {
+            $favorites = Favorite::where('user_id', Auth::user()->id)->where('hotel_id', $hotel->id)->first();
+        } else {
+            $favorites = false;
+        }
+
         return view('hotels.show', compact('hotel', 'favorites'), compact('reviews'));
     }
 
