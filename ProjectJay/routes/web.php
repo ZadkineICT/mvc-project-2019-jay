@@ -12,6 +12,21 @@
 */
 
 use App\Hotel;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Input;
+
+Route::get('/search', function () {
+    return view('search');
+});
+
+Route::any('/search', function () {
+    $q = Input::get('q');
+    $hotels = Hotel::where('name_hotel', 'LIKE', '%' . $q . '%')->orWhere('country', 'LIKE', '%' . $q . '%')->get();
+    if (count($hotels) > 0)
+        return view('search', compact('hotels'))->withQuery($q);
+    else
+        return view('search', compact('hotels'))->withQuery($q)->with('message', 'Cannot find hotels');
+});
 
 Auth::routes();
 
