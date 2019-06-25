@@ -37,7 +37,8 @@ class ReviewsController extends Controller
     public function create()
     {
         //
-        return view('frontpage', compact('hotels'));
+        // return view('frontpage', compact('hotels'));
+        return view('reviews.create');
     }
 
     /**
