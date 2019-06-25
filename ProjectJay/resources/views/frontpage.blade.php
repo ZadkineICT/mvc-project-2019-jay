@@ -15,7 +15,7 @@
 @endsection
 
 @section('popular')
-    <h3>Popular Items</h3>
+    <h3>Popular Hotels</h3>
     <div class="hotel-list">
         <div class="row">
             <?php $count = 0;?>

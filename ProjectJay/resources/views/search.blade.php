@@ -3,7 +3,7 @@
 @section('content')
 
     <div class="hotel-list">
-        <h1>Zoekresultaten</h1>
+        <h1>Search results</h1>
         <p> The Search results for your query <b> {{ $query }} </b> are :</p>
         <h2>Hotels</h2>
         <div class="row">
