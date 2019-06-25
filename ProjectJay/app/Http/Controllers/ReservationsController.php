@@ -15,9 +15,9 @@ class ReservationsController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('permission:create reservations',['only' => ['create', 'store']]);
-        $this->middleware('permission:edit reservations',['only' => ['edit', 'update']]);
-        $this->middleware('permission:delete reservations',['only' => ['delete', 'destroy']]);
+        $this->middleware('permission:create reservations', ['only' => ['create', 'store']]);
+        $this->middleware('permission:edit reservations', ['only' => ['edit', 'update']]);
+        $this->middleware('permission:delete reservations', ['only' => ['delete', 'destroy']]);
     }
     /**
      * Display a listing of the resource.
@@ -28,9 +28,7 @@ class ReservationsController extends Controller
     {
         //
         $reservations = Reservation::all();
-
         return view('reservations.index', compact('reservations'));
-
     }
 
     /**
@@ -64,12 +62,9 @@ class ReservationsController extends Controller
         $reservation->save();
 
         $user = Auth::user();
-        if($user->roles->pluck( 'name' )->contains( 'client' ))
-        {
+        if ($user->roles->pluck('name')->contains('client')) {
             return redirect()->route('home')->with('status', 'Added Reservation');
-        }
-        else
-        {
+        } else {
             return redirect()->route('reservations.index')->with('status', 'Added Reservation');
         }
     }
@@ -138,12 +133,9 @@ class ReservationsController extends Controller
         //
         $reservation->delete();
         $user = Auth::user();
-        if($user->roles->pluck( 'name' )->contains( 'client' ))
-        {
+        if ($user->roles->pluck('name')->contains('client')) {
             return redirect()->route('home')->with('status', 'Reservation Canceled');
-        }
-        else
-        {
+        } else {
             return redirect()->route('reservations.index')->with('status', 'Reservation Deleted');
         }
     }

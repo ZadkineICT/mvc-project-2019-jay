@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreReviewsRequest extends FormRequest
+class StoreFavoritesRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,10 +24,7 @@ class StoreReviewsRequest extends FormRequest
     public function rules()
     {
         return [
-            'date' => 'required',
-            'message' => 'required|max:500',
-            'stars' => 'required|gte:1|lte:5',
-            'hotel_id' => 'required|exists:hotels'
+            'hotel_id' => 'required|exists:hotels,id'
         ];
     }
 }

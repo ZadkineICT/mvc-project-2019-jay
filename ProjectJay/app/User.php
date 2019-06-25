@@ -23,15 +23,20 @@ class User extends Authenticatable
         return $this->hasOne('App\Employee');
     }
 
+    public function favorite()
+    {
+        return $this->hasMany('App\Favorite');
+    }
+
     public function review()
     {
         return $this->hasMany('App\Review');
     }
 
-//    public function assignRole(Role $role)
-//    {
-//        return $this->roles()->save($role);
-//    }
+    //    public function assignRole(Role $role)
+    //    {
+    //        return $this->roles()->save($role);
+    //    }
     /**
      * The attributes that are mass assignable.
      *
