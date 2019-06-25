@@ -23,6 +23,11 @@ class User extends Authenticatable
         return $this->hasOne('App\Employee');
     }
 
+    public function favorite()
+    {
+        return $this->hasMany('App\Favorite');
+    }
+
     public function review()
     {
         return $this->hasMany('App\Review');
@@ -58,9 +63,4 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-
-    public function isClient()
-    {
-        return $this->roles()->where('name', 'client')->exists();
-    }
 }

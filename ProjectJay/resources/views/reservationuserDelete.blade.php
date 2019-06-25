@@ -15,9 +15,9 @@
     @endif
 
     @can('delete reservations')
-        <form action="{{ route('home.destroy', $reservation) }}" method="POST">
+        <form action="{{ route('reservationUserDestroy', $reservation) }}" method="POST">
             @csrf
-            @method('POST')
+            @method('DELETE')
             <div class="form-group">
                 <label>Reservation Id</label>
                 <input disabled type="text" class="form-control" name="id" value="{{ $reservation->id }}">

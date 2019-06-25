@@ -12,6 +12,11 @@ class Hotel extends Model
         return $this->hasMany('App\Room');
     }
 
+    public function favorite()
+    {
+        return $this->hasMany('App\Favorite');
+    }
+
     public function employee()
     {
         return $this->hasMany('App\Employee');

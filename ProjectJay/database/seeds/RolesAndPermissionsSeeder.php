@@ -40,6 +40,10 @@ class RolesAndPermissionsSeeder extends Seeder
         Permission::create(['name' => 'edit reviews']);
         Permission::create(['name' => 'delete reviews']);
 
+        Permission::create(['name' => 'create favorites']);
+        Permission::create(['name' => 'edit favorites']);
+        Permission::create(['name' => 'delete favorites']);
+
         $role = Role::create(['name' => 'owner']);
         $role->givePermissionTo(Permission::all());
 
@@ -52,7 +56,8 @@ class RolesAndPermissionsSeeder extends Seeder
         $role->givePermissionTo('create reviews', 'edit reviews');
 
         $role = Role::create(['name' => 'client']);
-        $role->givePermissionTo('create reviews');
+        $role->givePermissionTo('create reviews', 'delete reviews');
         $role->givePermissionTo('create reservations', 'delete reservations');
+        $role->givePermissionTo('create favorites', 'delete favorites');
     }
 }

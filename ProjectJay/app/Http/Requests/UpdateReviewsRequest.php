@@ -25,9 +25,9 @@ class UpdateReviewsRequest extends FormRequest
     {
         return [
             'date' => 'required',
-            'message' => 'required',
-            'stars' => 'required',
-            'hotel_id' => 'required'
+            'message' => 'required|max:500',
+            'stars' => 'required|gte:1|lte:5',
+            'hotel_id' => 'required|exists:hotels'
         ];
     }
 }
