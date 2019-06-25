@@ -28,10 +28,10 @@ class User extends Authenticatable
         return $this->hasMany('App\Review');
     }
 
-//    public function assignRole(Role $role)
-//    {
-//        return $this->roles()->save($role);
-//    }
+    //    public function assignRole(Role $role)
+    //    {
+    //        return $this->roles()->save($role);
+    //    }
     /**
      * The attributes that are mass assignable.
      *
@@ -58,4 +58,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function isClient()
+    {
+        return $this->roles()->where('name', 'client')->exists();
+    }
 }

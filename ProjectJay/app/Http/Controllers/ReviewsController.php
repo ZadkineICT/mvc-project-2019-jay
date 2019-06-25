@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Review;
 use App\Http\Requests\StoreReviewsRequest;
 use App\Http\Requests\UpdateReviewsRequest;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class ReviewsController extends Controller
@@ -37,7 +38,7 @@ class ReviewsController extends Controller
     public function create()
     {
         //
-        return view('reviews.create');
+        return view('frontpage');
     }
 
     /**
@@ -57,7 +58,11 @@ class ReviewsController extends Controller
 
         $review->save();
 
-        return redirect()->route('reviews.index')->with('status', 'Added Review');
+        if (Auth::user()->isClient()) {
+            return redirect()->route('hotels.show', $_GET['id'])->with('status', 'Added Review');
+        } else {
+            return redirect()->route('reviews.index')->with('status', 'Added Review');
+        }
     }
 
     /**

@@ -76,6 +76,12 @@ Route::group(['middleware' => ['role:client']], function () {
     Route::post('/home/{reservation}', 'HomeController@destroy')->name('home.destroy');
 });
 
+Route::group(['middleware' => ['role:client']], function () {
+    Route::get('test', 'ReviewsController@create')->name('reviews.create');
+    Route::resource('/reviews', 'ReviewsController');
+});
+
+
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/hotels/{hotel}', 'HotelsController@show')->name('hotels.show');
 Route::get('/reservations/create', 'ReservationsController@create')->name('reservations.create');
@@ -83,5 +89,4 @@ Route::post('/reservations', 'ReservationsController@store');
 Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 Route::get('/changePassword','HomeController@showChangePasswordForm');
 Route::post('/changePassword','HomeController@changePassword')->name('changePassword');
-
 

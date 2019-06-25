@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Hotel;
 use App\Http\Requests\StoreHotelsRequest;
 use App\Http\Requests\UpdateHotelsRequest;
+use App\Room;
+use App\Review;
 use Illuminate\Http\Request;
 
 class HotelsController extends Controller
@@ -39,6 +41,7 @@ class HotelsController extends Controller
         return view('hotels.create');
     }
 
+
     /**
      * Store a newly created resource in storage.
      *
@@ -71,7 +74,8 @@ class HotelsController extends Controller
     public function show(Hotel $hotel)
     {
         //
-        return view('hotels.show', compact('hotel'));
+        $reviews = Review::all();
+        return view('hotels.show', compact('hotel'), compact('reviews'));
     }
 
     /**
